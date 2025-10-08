@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['**']
+    tags:
+      - '**'
+jobs:
+  build_and_test_ros2:
+    # Define the container image(s) associated with each ROS distribution.
+    # Platforms are defined in REP 2000: https://ros.org/reps/rep-2000.html
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ros_distribution:
+          - humble
+          - jazzy
+          - kilted
+
+        include:
+          # Humble Hawksbill (May 2022 - May 2027) with Ubuntu Jammy (22.04)
+          - docker_image: rostooling/setup-ros-docker:ubuntu-jammy-latest
+            ros_distribution: humble
+          # Jazzy Jalisco (May 2024 - May 2029) with Ubuntu Noble (24.04)
+          - docker_image: rostooling/setup-ros-docker:ubuntu-noble-latest
+            ros_distribution: jazzy
+          # Kilted Kaiju (May 2025 - November 2026) with Ubuntu Noble (24.04)
+          - docker_image: rostooling/setup-ros-docker:ubuntu-noble-latest
+            ros_distribution: kilted
+  
+    container:
+      image: ${{ matrix.docker_image }}
+
+    steps:
+
+      - name: Set up Git repository
+        uses: actions/checkout@v4
+
+      - name: 🤖 Build ROS2 package(s) and run tests
+        uses: ros-tooling/action-ros-ci@v0.4
