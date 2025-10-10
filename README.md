@@ -1,4 +1,4 @@
-# :nut_and_bolt: Hacking cyber-physical systems in real-time. 
+# :nut_and_bolt: Hacking cyber-physical systems in real-time 
 
 ![fig](docs/figures/team-ucl-cps-hackathon-01.svg)
 
