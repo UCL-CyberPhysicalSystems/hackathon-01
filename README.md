@@ -1,26 +1,28 @@
-# :nut_and_bolt: Hacking cyber-physical systems with real-time data. 
+# :nut_and_bolt: Hacking cyber-physical systems in real-time. 
 
-![fig](team-ucl-cps-hackathon-01.svg)
+![fig](docs/figures/team-ucl-cps-hackathon-01.svg)
 
 ## :scroll: Description
-ARC and CEGE at UCL Here East are organising two hackathons using live sensor data, such as cameras, LiDAR, and motion tracking—from the cyber-physical lab in G40 at UCL Here East. The data will be made available to ARC staff via ARC’s computing infrastructure for projects exploring cyber-physical systems, embodied AI, and physical AI. Additionally, it is hoped that these hackathons will generate projects with new applications for the existing sensors beyond the current scope of manufacturing in aerospace. 
+The UCL Departments of Advanced Research Computing (ARC) and Civil, Environmental and Geomatic Engineering (CEGE) are organising a series of hackathons that combine software infrastructure from ARC with hardware and sensor infrastructure from CEGE. 
+The aim is to enable UCL teams to explore cyber-physical systems, embodied AI, and physical AI.
+Additionally, these hackathons aim to spark new projects and collaborations that may lead to innovative applications for existing sensors, robots, and GPU servers, extending their use beyond current domains such as manufacturing, aerospace, healthcare, and security.
 
-WHEN: Late January 2026 (TIP dates are 14/15 Jan 2026)
-WHERE: UCL Here East (G40)
+### Hackathon 1: Preliminary Small Hackathon for Feasibility and Idea Generation
+WHO: 5–6 ARC staff, including someone from Environments to assist with setting up VMs. Other useful participants would include staff involved in current projects using live data, and those with knowledge of ROS.   
+WHAT: Address initial issues in network connectivity, VMs, and ROS. Generate ideas for Hackathon 2, assessing feasibility and planning the necessary work in preparation.    
+WHEN: Late January 2026 (FYI: TIP dates are 14–15 January 2026).   
+WHERE: UCL Here East (G40).    
 
-
-### Hackathon 1: Preliminary, small hackathon for feasibility and idea generation 
-* WHO? 5-6 ARC staff, including someone from environments to aid in setting up VMs, other staff involved in current projects using live data would be useful, staff with knowledge of ROS 
-* WHAT? Solve teething problems in network connectivity, VMs, ROS. Generate ideas for Hackathon 2, assessing feasibility and planning necessary work ahead of Hackathon 2. 
-
-### Hackathon 2: Larger hackathon to explore ideas, create projects 
-* WHAT? Explore project ideas in key areas of: Data (collection, processing, visualization), Machine Learning applied to live data, Live Data Infrastructure + Security, Robot Control. 
-* WHO? 20-30 ARC staff – anyone interested, although it would be beneficial to include all Hackathon 1 attendees 
-
+### Hackathon 2: Larger Hackathon to Explore Ideas and Create Projects 
+WHO: 20–30 ARC staff — open to anyone interested, though ideally including all attendees from Hackathon 1.    
+WHAT: Explore project ideas in key areas such as:  Data (collection, processing, visualisation), Machine learning applied to live data, Live data infrastructure and security, Robot control.    
+WHEN: Late April 2026 (FYI: TIP dates are 15–16 April 2026); or Late July 2026 (FYI: TIP dates are 7–8 July 2026).    
+WHERE: UCL Here East (G40).     
 
 ## :sparkles: Organisers, participants, and collaborators.
 
-* ARC: UCL Advanced Research Computing Centre
+* ARC: UCL Advanced Research Computing Centre:    
+Emily Dubrovska, e.dubrovska@ucl.ac.uk
 Yagmur Ozdemir <yagmur.idil.ozdemir@ucl.ac.uk> 
 Marlon Wijeyasinghe <m.wijeyasinghe@ucl.ac.uk>
 Ruaridh Gollifer <r.gollifer@ucl.ac.uk>
@@ -29,14 +31,14 @@ Samantha Ahern, <s.ahern@ucl.ac.uk>
 Miguel Xochicale, <m.xochicale@ucl.ac.uk>
 James Hetherington <j.hetherington@ucl.ac.uk>
 
-* CEGE: UCL Civil, Environmental and Geomatic Engineering
+* CEGE: UCL Civil, Environmental and Geomatic Engineering:    
 Mickey Li, <mickey.li@ucl.ac.uk>
 Chris Bendkowski,  <christopher.bendkowski.18@ucl.ac.uk>
 
 
 ## :school: Express interest
-Registration is free. You can express your interest by commenting on this discussion ticket with your GitHub username, your availability, the skills you have, and the ones you’d like to learn [here](https://github.com/UCL-CyberPhysicalSystems/hackathon-01/discussions/categories/express-of-interest)
-
+Registration is free. 
+You can express your interest by commenting on this discussion [ticket](https://github.com/UCL-CyberPhysicalSystems/hackathon-01/discussions/categories/express-of-interest) with your GitHub username, your availability, the skills you have, and the ones you’d like to learn.
 
 ## :computer: TODISCUSS Pre-requisites 
 * [ ] Highlight Hackathon 1 in Q4 2025 planning meeting to ensure attending staff will have availability. 
@@ -53,9 +55,9 @@ The following is a general agenda that may be subject to slight changes.
 ### Day 01
 | Time  | Activity  | 
 | --- |--- |
-| 08:30 - 09:00 | Arrival | 
-| 09:00 – 09:15 | Welcome session | 
-| 09:15 – 10:30 | Hacking: Introduction and preparation to hack  [:link:](day01.md) |
+| 08:30 - 09:00 | Arrival and networking | 
+| 09:00 – 09:15 | Welcome message | 
+| 09:15 – 10:30 | Introduction (document as you hack) [:link:](day01.md) |
 | 10:30 - 10:45 | Coffee break | 
 | 10:45 - 12:30 | Hacking:  [:link:](day01.md) |
 | 12:30 - 13:30 | Lunch break | 
@@ -67,14 +69,16 @@ The following is a general agenda that may be subject to slight changes.
 ### Day 02
 | Time  | Activity  | 
 | --- |--- |
+| 08:30 - 09:00 | Arrival and networking | 
+| 09:00 – 09:15 | Welcome message | 
 | 09:00 – 10:30 | Hacking: [:link:](day02.md) |
 | 10:30 - 10:45 | Coffee break | 
 | 10:45 - 12:30 | Hacking: [:link:](day02.md) |
 | 12:30 - 13:30 | Lunch break | 
 | 13:30 - 15:00 | Hacking: [:link:](day02.md) |
 | 15:00 - 15:15 | Coffee break | 
-| 15:15 - 16:30 | Hacking: [:link:](day02.md)  | 
-| 16:30 - 17:00 | Closing session  |
+| 15:15 - 16:30 | Lightning talks  | 
+| 16:45 - 17:00 | Clonclusions and call for action! |
 
 
 ## :family: Forum
