@@ -27,15 +27,23 @@ RUN apt-get update -qq && apt-get install -y software-properties-common curl && 
     curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg && \
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | tee /etc/apt/sources.list.d/ros2.list > /dev/null
 
+# Setup gazebosim transport
+RUN echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list && \
+    curl https://packages.osrfoundation.org/gazebo.key | apt-key add - && \
+    apt-get update -qq && \
+    apt-get install -y libgz-transport13-dev && \
+    apt-get install -y python3-gz-transport13
+
 # General ROS2 environment variables
 ENV ROS_DISTRO=humble
 ENV ROS_VERSION=2
 ENV ROS_PYTHON_VERSION=3
 
-# Install ROS 2 packages
+# Install ROS 2 distro and colcon deps
 RUN apt-get update -qq && apt-get upgrade -y && \
     apt-get install -y \
     ros-${ROS_DISTRO}-desktop \
+    python3-colcon-common-extensions \
     && rm -rf /var/lib/apt/lists/*
 
 # Downgrade libbrotli1 to fix compatibility issues in Isaac Sim 4.5.0
@@ -46,6 +54,7 @@ RUN apt-get update -qq && apt-get upgrade -y && \
 RUN apt-get update && apt-get install -y \
     ros-${ROS_DISTRO}-turtlesim \
     ros-${ROS_DISTRO}-rqt* \
+    ros-${ROS_DISTRO}-xacro \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
