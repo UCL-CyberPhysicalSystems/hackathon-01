@@ -8,7 +8,8 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 * Install dependencies
 ```bash
-uv venv --python 3.9 #seems to work with /usr/local/lib/python3.10 from the colabs notebook
+# Create a virtual environment with Python 3.9 or 3.10 (both are supported)
+uv venv --python 3.9  # or use 3.10 if available (e.g., Colab uses Python 3.10)
 source .venv/bin/activate
 uv pip install pip jupyterlab
 
