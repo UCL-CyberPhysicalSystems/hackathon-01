@@ -19,7 +19,17 @@ ARG USER_GID=$USER_UID
 
 ENV NVIDIA_VISIBLE_DEVICES=all
 ENV NVIDIA_DRIVER_CAPABILITIES=${NVIDIA_DRIVER_CAPABILITIES:+$NVIDIA_DRIVER_CAPABILITIES,}compute,video,utility,graphics
+
+# QT set up
 ENV QT_X11_NO_MITSHM=1
+ENV QT_QPA_PLATFORM=offscreen
+ENV QT_DEBUG_PLUGINS=0
+#?ENV QT_DEBUG_PLUGINS=1
+#?ENV QT_QPA_PLATFORM=xcb
+#?ENV QT_QPA_PLATFORM_PLUGIN_PATH=/opt/Qt/${QT_VERSION}/gcc_64/plugins
+#?ENV QT_PLUGIN_PATH=/opt/Qt/${QT_VERSION}/gcc_64/plugins
+#?ENV DISPLAY=:1
+
 
 # Timezone Europe/London
 ENV TZ=Europe/London
@@ -47,7 +57,6 @@ RUN echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_releas
     apt-get update -qq && \
     apt-get install -y libgz-transport13-dev
 
-
 # General ROS2 environment variables
 ENV ROS_DISTRO=humble
 ENV ROS_VERSION=2
@@ -56,7 +65,7 @@ ENV AMENT_PREFIX_PATH=/opt/ros/${ROS_DISTRO}
 ENV COLCON_PREFIX_PATH=/opt/ros/${ROS_DISTRO}
 ENV LD_LIBRARY_PATH=/opt/ros/${ROS_DISTRO}/lib
 ENV PATH=/opt/ros/${ROS_DISTRO}/bin:$PATH
-ENV PYTHONPATH=/ros2_ws/.venv/lib/python3.9/site-package
+ENV PYTHONPATH=/opt/ros/${ROS_DISTRO}/lib/python3.10/site-packages
 
 
 # Install ROS 2 packages
@@ -88,6 +97,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     less \
     udev \
     sudo \
+    gfortran \
     libpng-dev \
     libgomp1 \
     libgl1-mesa-glx \
@@ -97,34 +107,39 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     libmagic1 \
     libxext6 \
     libxrender-dev \
+    libopenblas-dev \
+    liblapack-dev \
     software-properties-common \
     tree \
     curl \
+    python3-dev \
+    python3-pip \
+    python3-venv \
+    python3-pytest-cov \
+    python3-rosdep \
+    python3-gz-transport13 \
+    ros-dev-tools \
     vim \
     vim-gtk \
     xclip \
     zstd \
     && rm -rf /var/lib/apt/lists/*
 
-# #############################
-# # Setting up uv environment
-# #############################
-# Install uv (Rust-based Python package manager, faster than pip)
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
+
+#TOTEST
+# #############################
+# # Setting up environment
+# #############################
 # Add uv to PATH
-ENV PATH="/root/.local/bin/:$PATH"
-
-WORKDIR /ros2_ws
-
-# Create uv virtual environment and install dependencies
-RUN uv venv --python 3.9 --system-site-packages
-RUN . .venv/bin/activate
-RUN uv pip install -U pip argcomplete setuptools==58.2.0 bloom colcon-common-extensions rosdep vcstool lark numpy==1.23.4 scipy==1.11.1 torch torchvision PyQt5 opencv-python h5py tqdm gym==0.17.3 typed-argument-parser==1.10.0 einops termcolor==2.4.0 GitPython==3.1.37 matplotlib==3.7.2 pybullet==3.2.5 colorama==0.4.6 pandas imageio wandb==0.14.2
-# Notes (not sure where to put them but here are some)
-# pip deps from ros-dev-tools #https://discourse.ros.org/t/ros-developer-tools-now-in-binary-form/29802
+#ENV PATH="/root/.local/bin/:$PATH"
+#WORKDIR /ros2_ws
+## Create uv virtual environment and install dependencies
+#RUN uv venv --python 3.9 --system-site-packages
+#RUN . .venv/bin/activate
+#RUN pip install -U pip argcomplete setuptools==58.2.0 bloom colcon-common-extensions rosdep vcstool lark numpy==1.23.4 scipy==1.11.1 torch torchvision PyQt5 opencv-python h5py tqdm gym==0.17.3 typed-argument-parser==1.10.0 einops termcolor==2.4.0 GitPython==3.1.37 matplotlib==3.7.2 pybullet==3.2.5 colorama==0.4.6 pandas imageio wandb==0.14.2
 # why setuptools 80.7.1 does not work? #https://robotics.stackexchange.com/questions/101255/setuptoolsdeprecationwarning-setup-py-install-is-deprecated-use-build-and-pip
-# uv pip list --verbose #see all installed packages
+# pip list --verbose #see all installed packages
 
 
 #####################################
@@ -134,12 +149,13 @@ RUN uv pip install -U pip argcomplete setuptools==58.2.0 bloom colcon-common-ext
 RUN echo "" >> ~/.bashrc
 RUN echo "## ROS2" >> ~/.bashrc
 RUN echo 'source /opt/ros/${ROS_DISTRO}/setup.bash' >> ~/.bashrc
-RUN echo 'source /ros2_ws/.venv/bin/activate' >> ~/.bashrc
-### Setting up and calling the entrypoint
-RUN echo '#!/usr/bin/env bash' > /ros_entrypoint.sh
-RUN echo 'source $HOME/.bashrc' >> /ros_entrypoint.sh
-RUN echo 'exec "$@"' >> /ros_entrypoint.sh
-RUN chmod +x /ros_entrypoint.sh
-ENTRYPOINT ["/ros_entrypoint.sh"]
 
+#TOTEST
+# RUN echo 'source /ros2_ws/.venv/bin/activate' >> ~/.bashrc
+# ### Setting up and calling the entrypoint
+# RUN echo '#!/usr/bin/env bash' > /ros_entrypoint.sh
+# RUN echo 'source $HOME/.bashrc' >> /ros_entrypoint.sh
+# RUN echo 'exec "$@"' >> /ros_entrypoint.sh
+# RUN chmod +x /ros_entrypoint.sh
+# ENTRYPOINT ["/ros_entrypoint.sh"]
 

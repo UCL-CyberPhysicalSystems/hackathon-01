@@ -1,20 +1,40 @@
+#!/bin/bash
 
+# Simple Docker build script
+# Usage: bash build-docker.bash [profile]
 
-############
-#docker build -t ros:two -f Dockerfile-ros2 .
-#logs
-#ros:two 4.02GB
+set -e  # Exit on error
 
-############
-docker build -t ros2:cuda -f Dockerfile-ros2-cuda .
+case "$1" in
+    "ros2")
+        echo "Building ROS2 base image..."
+        docker build -t ros:two -f Dockerfile-ros2 .
+        ;;
+    "ros2-cuda")
+        echo "Building ROS2 with CUDA..."
+        docker build -t ros2:cuda -f Dockerfile-ros2-cuda .
+        ;;
+    "isaac-sim")
+        echo "Building Isaac Sim with ROS2..."
+        docker build -t isaac_sim_ros2:5.0.0-Humble -f Dockerfile-isaacsim-ros2 .
+        ;;
+    "all")
+        echo "Building all images..."
+        docker build -t ros:two -f Dockerfile-ros2 .
+        docker build -t ros2:cuda -f Dockerfile-ros2-cuda .
+        docker build -t isaac_sim_ros2:5.0.0-Humble -f Dockerfile-isaacsim-ros2 .
+        ;;
+    ""|"-h"|"--help")
+        echo "Usage: $0 [profile]"
+        echo "Profiles: ros2, ros2-cuda, isaac-sim, all"
+        exit 1
+        ;;
+    *)
+        echo "Error: Unknown profile '$1'"
+        echo "Available profiles: ros2, ros2-cuda, isaac-sim, all"
+        exit 1
+        ;;
+esac
 
-#logs
-#Building 1599.4s (29/29) FINISHED 
-#ros2:cuda 22.4GB
-
-
-############
-#docker build -t isaac_sim_ros2:5.0.0-Humble -f Dockerfile-isaacsim-ros2 .
-#logs
-#isaac_sim_ros2:5.0.0-Humble 18.9GB
+echo "Build completed successfully!"
 
