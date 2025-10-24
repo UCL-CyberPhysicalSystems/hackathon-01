@@ -15,6 +15,8 @@ uv run jupyter lab
 
 ![animation](animation-potential-motion-plan-release.gif)
 
+* [eval_kuka7d_base.ipynb](eval_kuka7d_base.ipynb)
+![animation](kuka7d_base.gif)
 
 ## Notes
 * The Python dependencies require torch, which downloads several `nvidia_cuda*` packages. This process takes around five minutes, but it might be better to use a shared environment so that all users work with the same setup.
