@@ -1,8 +1,12 @@
-ARG UBUNTU_RELEASE_YEAR=22
+ARG UBUNTU_RELEASE_YEAR=24
 ARG UBUNTU_RELEASE_MONTH=04
 ARG CUDA_MAJOR=13
 ARG CUDA_MINOR=0
 ARG CUDA_PATCH=0
+
+# Ubuntu versions
+##  Ubuntu 24.04 Noble
+##  Ubuntu 22.04 Jammy
 
 FROM docker.io/nvidia/cuda:${CUDA_MAJOR}.${CUDA_MINOR}.${CUDA_PATCH}-devel-ubuntu${UBUNTU_RELEASE_YEAR}.${UBUNTU_RELEASE_MONTH} AS base
 #Latest cuda image versions https://hub.docker.com/r/nvidia/cuda/tags
@@ -20,15 +24,19 @@ ARG USER_GID=$USER_UID
 ENV NVIDIA_VISIBLE_DEVICES=all
 ENV NVIDIA_DRIVER_CAPABILITIES=${NVIDIA_DRIVER_CAPABILITIES:+$NVIDIA_DRIVER_CAPABILITIES,}compute,video,utility,graphics
 
-# QT set up
+# Qt Base Configuration
 ENV QT_X11_NO_MITSHM=1
 ENV QT_QPA_PLATFORM=offscreen
 ENV QT_DEBUG_PLUGINS=0
-#?ENV QT_DEBUG_PLUGINS=1
-#?ENV QT_QPA_PLATFORM=xcb
-#?ENV QT_QPA_PLATFORM_PLUGIN_PATH=/opt/Qt/${QT_VERSION}/gcc_64/plugins
-#?ENV QT_PLUGIN_PATH=/opt/Qt/${QT_VERSION}/gcc_64/plugins
-#?ENV DISPLAY=:1
+
+# For GUI applications (requires X11 forwarding or virtual display)
+ENV DISPLAY=:1
+ENV QT_QPA_PLATFORM=xcb
+
+# Plugin paths (adjust based on your Qt installation)
+# ENV QT_PLUGIN_PATH=/opt/qt/plugins
+# ENV QT_QPA_PLATFORM_PLUGIN_PATH=/opt/qt/plugins/platforms
+
 
 
 # Timezone Europe/London
@@ -58,7 +66,14 @@ RUN echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_releas
     apt-get install -y libgz-transport13-dev
 
 # General ROS2 environment variables
-ENV ROS_DISTRO=humble
+# Define the container image(s) associated with each ROS distribution.
+# Platforms are defined in REP 2000: https://ros.org/reps/rep-2000.html
+##  Humble Hawksbill (May 2022 - May 2027)
+##  Iron Irwini (May 2023 - November 2024)
+##  Jazzy Jalisco (May 2024 - May 2029)
+
+#ENV ROS_DISTRO=humble
+ENV ROS_DISTRO=jazzy
 ENV ROS_VERSION=2
 ENV ROS_PYTHON_VERSION=3
 ENV AMENT_PREFIX_PATH=/opt/ros/${ROS_DISTRO}
@@ -75,6 +90,7 @@ RUN apt-get update -qq && apt-get upgrade -y && \
     ros-${ROS_DISTRO}-turtlesim \
     ros-${ROS_DISTRO}-rqt* \
     ros-${ROS_DISTRO}-xacro \
+    ros-${ROS_DISTRO}-ros-gz \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -98,14 +114,21 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     udev \
     sudo \
     gfortran \
+    qtbase5-dev \
+    qttools5-dev \
+    libqt5core5a \
     libpng-dev \
     libgomp1 \
-    libgl1-mesa-glx \
+    libglu1-mesa \
+    libxext6 \
+    libsm6 \
+    libice6 \
+    dbus-x11 \
     libglib2.0-0 \
     libsm6 \
     libmagic-mgc \
     libmagic1 \
-    libxext6 \
+    libxrender1 \
     libxrender-dev \
     libopenblas-dev \
     liblapack-dev \
@@ -120,7 +143,6 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     python3-gz-transport13 \
     ros-dev-tools \
     vim \
-    vim-gtk \
     xclip \
     zstd \
     && rm -rf /var/lib/apt/lists/*

@@ -10,11 +10,11 @@ case "$1" in
         echo "Building ROS2 base image..."
         docker build -t ros:two -f Dockerfile-ros2 .
         ;;
-    "ros2-cuda")
+    "ros2cuda")
         echo "Building ROS2 with CUDA..."
         docker build -t ros2:cuda -f Dockerfile-ros2-cuda .
         ;;
-    "isaac-sim")
+    "isaacsim")
         echo "Building Isaac Sim with ROS2..."
         docker build -t isaac_sim_ros2:5.0.0-Humble -f Dockerfile-isaacsim-ros2 .
         ;;
@@ -26,12 +26,12 @@ case "$1" in
         ;;
     ""|"-h"|"--help")
         echo "Usage: $0 [profile]"
-        echo "Profiles: ros2, ros2-cuda, isaac-sim, all"
+        echo "Profiles: ros2, ros2cuda, isaacsim, all"
         exit 1
         ;;
     *)
         echo "Error: Unknown profile '$1'"
-        echo "Available profiles: ros2, ros2-cuda, isaac-sim, all"
+        echo "Available profiles: ros2, ros2cuda, isaacsim, all"
         exit 1
         ;;
 esac
