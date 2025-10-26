@@ -56,7 +56,9 @@ pip install -e .
 ```
 * Run visualization
 ```bash
+
 cd /home/diffusion_path_planning/diffusion
+source .env.ros2cuda/bin/activate
 
 python3 path_visualization_simulator.py --config "config/rm2d/rSmaze_nw3_hExt07_exp.py"
 
@@ -83,6 +85,9 @@ ImportError: cannot import name 'get_is_collision_static' from partially initial
 ```
 * launch gazebo simulation
 ```bash
+cd /home/diffusion_path_planning
+colcon build --base-paths src
+
 source /home/diffusion_path_planning/install/setup.bash 
 ros2 launch robot_gazebo main.launch.py  
 ```

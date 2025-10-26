@@ -38,7 +38,6 @@ ENV QT_DEBUG_PLUGINS=0
 # For GUI applications (requires X11 forwarding or virtual display)
 ENV DISPLAY=:0
 ENV QT_QPA_PLATFORM=xcb
-#?ENV QT_QPA_PLATFORM=offscreen
 
 # Plugin paths (adjust based on your Qt installation)
 # ENV QT_PLUGIN_PATH=/opt/qt/plugins
@@ -49,7 +48,7 @@ ENV QT_QPA_PLATFORM=xcb
 # Timezone Europe/London
 ENV TZ=Europe/London
 RUN ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime && echo ${TZ} > /etc/timezone
-RUN echo "CUDA Version 13.0.0" > /usr/local/cuda/version.txt
+RUN echo "CUDA Version ${CUDA_MAJOR}.${CUDA_MINOR}.${CUDA_PATCH}" > /usr/local/cuda/version.txt
 
 # Language
 RUN apt-get update && apt-get install -y locales
@@ -67,8 +66,8 @@ RUN apt-get update -qq && apt-get install -y software-properties-common curl && 
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | tee /etc/apt/sources.list.d/ros2.list > /dev/null
 
 # Setup gazebosim transport
-RUN echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list && \
-    curl https://packages.osrfoundation.org/gazebo.key | apt-key add - && \
+RUN curl -sSL https://packages.osrfoundation.org/gazebo.key | gpg --dearmor -o /usr/share/keyrings/gazebo-archive-keyring.gpg && \
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/gazebo-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" > /etc/apt/sources.list.d/gazebo-stable.list && \
     apt-get update -qq && \
     apt-get install -y libgz-transport13-dev
 

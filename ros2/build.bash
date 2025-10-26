@@ -27,7 +27,7 @@ case "$1" in
     ""|"-h"|"--help")
         echo "Usage: $0 [profile]"
         echo "Profiles: ros2, ros2cuda, isaacsim, all"
-        exit 1
+        exit 0
         ;;
     *)
         echo "Error: Unknown profile '$1'"
