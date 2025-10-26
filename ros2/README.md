@@ -9,8 +9,9 @@ bash build.bash
 ```
 * run
 ```bash
-bash run.bash
 bash run-ros2.bash
+bash run-ros2cuda.bash
+bash run-ros2isaacsim.bash
 ```
 * docker commands: images, ps, stop, remove
 ```bash
@@ -20,8 +21,18 @@ docker stop $(docker ps -a -q)
 docker system prune -f --volumes
 ```
 
+## rosdep-init
+```bash
+ROS_DISTRO=humble
+rosdep fix-permissions
+rosdep init
+rosdep update --rosdistro ${ROS_DISTRO}
+rosdep install --from-paths src --ignore-src -r -y --rosdistro ${ROS_DISTRO}
+colcon build --symlink-install
+source install/setup.bash
+```
+
 ## References
 * https://docs.ros.org/en/foxy/index.html
 * https://roboticseabass.com/2023/07/09/updated-guide-docker-and-ros2/ 
-
-
+* https://faun.pub/ros2-humble-gui-docker-container-a-step-by-step-guide-c541b73fe141

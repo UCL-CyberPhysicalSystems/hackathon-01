@@ -1,1 +1,6 @@
 **.swp
+
+##uv
+**/.venv
+**/.ipynb_checkpoints
+**/potential-motion-plan-release
