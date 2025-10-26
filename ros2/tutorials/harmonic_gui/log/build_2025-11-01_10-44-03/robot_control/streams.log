@@ -1,0 +1,52 @@
+[0.020s] Invoking command in '/home/hackathon-01/ros2/tutorials/harmonic_gui/build/robot_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/hackathon-01/ros2/tutorials/harmonic_gui/src/robot_control -DCMAKE_INSTALL_PREFIX=/home/hackathon-01/ros2/tutorials/harmonic_gui/install/robot_control
+[0.114s] -- The C compiler identification is GNU 13.3.0
+[0.197s] -- The CXX compiler identification is GNU 13.3.0
+[0.220s] -- Detecting C compiler ABI info
+[0.352s] -- Detecting C compiler ABI info - done
+[0.365s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.365s] -- Detecting C compile features
+[0.366s] -- Detecting C compile features - done
+[0.379s] -- Detecting CXX compiler ABI info
+[0.518s] -- Detecting CXX compiler ABI info - done
+[0.531s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.531s] -- Detecting CXX compile features
+[0.531s] -- Detecting CXX compile features - done
+[0.536s] -- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.739s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.908s] -- Found ament_lint_auto: 0.17.3 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[1.052s] -- Added test 'copyright' to check source files copyright and LICENSE
+[1.054s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.054s] -- Configured 'flake8' exclude dirs and/or files: 
+[1.055s] -- Added test 'lint_cmake' to check CMake code style
+[1.056s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[1.057s] -- Added test 'xmllint' to check XML markup files
+[1.059s] -- Configuring done (1.0s)
+[1.062s] -- Generating done (0.0s)
+[1.065s] -- Build files have been written to: /home/hackathon-01/ros2/tutorials/harmonic_gui/build/robot_control
+[1.074s] Invoked command in '/home/hackathon-01/ros2/tutorials/harmonic_gui/build/robot_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/hackathon-01/ros2/tutorials/harmonic_gui/src/robot_control -DCMAKE_INSTALL_PREFIX=/home/hackathon-01/ros2/tutorials/harmonic_gui/install/robot_control
+[1.076s] Invoking command in '/home/hackathon-01/ros2/tutorials/harmonic_gui/build/robot_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/hackathon-01/ros2/tutorials/harmonic_gui/build/robot_control -- -j22 -l22
+[1.131s] Invoked command in '/home/hackathon-01/ros2/tutorials/harmonic_gui/build/robot_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/hackathon-01/ros2/tutorials/harmonic_gui/build/robot_control -- -j22 -l22
+[1.144s] Invoking command in '/home/hackathon-01/ros2/tutorials/harmonic_gui/build/robot_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/hackathon-01/ros2/tutorials/harmonic_gui/build/robot_control
+[1.157s] -- Install configuration: ""
+[1.158s] -- Installing: /home/hackathon-01/ros2/tutorials/harmonic_gui/install/robot_control/share/robot_control//launch
+[1.162s] -- Installing: /home/hackathon-01/ros2/tutorials/harmonic_gui/install/robot_control/share/robot_control//launch/robot_control.launch.py
+[1.163s] -- Installing: /home/hackathon-01/ros2/tutorials/harmonic_gui/install/robot_control/share/robot_control//scripts
+[1.163s] -- Installing: /home/hackathon-01/ros2/tutorials/harmonic_gui/install/robot_control/share/robot_control//scripts/robot_controller.py
+[1.164s] -- Installing: /home/hackathon-01/ros2/tutorials/harmonic_gui/install/robot_control/lib/robot_control/robot_controller.py
+[1.164s] -- Installing: /home/hackathon-01/ros2/tutorials/harmonic_gui/install/robot_control/lib/robot_control/robot_control.launch.py
+[1.164s] -- Installing: /home/hackathon-01/ros2/tutorials/harmonic_gui/install/robot_control/share/ament_index/resource_index/package_run_dependencies/robot_control
+[1.165s] -- Installing: /home/hackathon-01/ros2/tutorials/harmonic_gui/install/robot_control/share/ament_index/resource_index/parent_prefix_path/robot_control
+[1.166s] -- Installing: /home/hackathon-01/ros2/tutorials/harmonic_gui/install/robot_control/share/robot_control/environment/ament_prefix_path.sh
+[1.167s] -- Installing: /home/hackathon-01/ros2/tutorials/harmonic_gui/install/robot_control/share/robot_control/environment/ament_prefix_path.dsv
+[1.167s] -- Installing: /home/hackathon-01/ros2/tutorials/harmonic_gui/install/robot_control/share/robot_control/environment/path.sh
+[1.168s] -- Installing: /home/hackathon-01/ros2/tutorials/harmonic_gui/install/robot_control/share/robot_control/environment/path.dsv
+[1.168s] -- Installing: /home/hackathon-01/ros2/tutorials/harmonic_gui/install/robot_control/share/robot_control/local_setup.bash
+[1.169s] -- Installing: /home/hackathon-01/ros2/tutorials/harmonic_gui/install/robot_control/share/robot_control/local_setup.sh
+[1.169s] -- Installing: /home/hackathon-01/ros2/tutorials/harmonic_gui/install/robot_control/share/robot_control/local_setup.zsh
+[1.169s] -- Installing: /home/hackathon-01/ros2/tutorials/harmonic_gui/install/robot_control/share/robot_control/local_setup.dsv
+[1.170s] -- Installing: /home/hackathon-01/ros2/tutorials/harmonic_gui/install/robot_control/share/robot_control/package.dsv
+[1.170s] -- Installing: /home/hackathon-01/ros2/tutorials/harmonic_gui/install/robot_control/share/ament_index/resource_index/packages/robot_control
+[1.173s] -- Installing: /home/hackathon-01/ros2/tutorials/harmonic_gui/install/robot_control/share/robot_control/cmake/robot_controlConfig.cmake
+[1.173s] -- Installing: /home/hackathon-01/ros2/tutorials/harmonic_gui/install/robot_control/share/robot_control/cmake/robot_controlConfig-version.cmake
+[1.173s] -- Installing: /home/hackathon-01/ros2/tutorials/harmonic_gui/install/robot_control/share/robot_control/package.xml
+[1.175s] Invoked command in '/home/hackathon-01/ros2/tutorials/harmonic_gui/build/robot_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/hackathon-01/ros2/tutorials/harmonic_gui/build/robot_control
