@@ -3,6 +3,8 @@
 Code: https://drive.google.com/drive/folders/1qRyeqFk1crV68H3dioz4YGdWjbULWmTh
 Video: https://www.youtube.com/watch?v=u54WAlAewMU
 
+![fig](fig_harmonic_gui.png)
+
 Run container
 ```bash
 bash run-ros2cuda.bash
