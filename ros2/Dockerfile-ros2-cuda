@@ -102,10 +102,11 @@ RUN apt-get update -qq && apt-get upgrade -y && \
     ros-${ROS_DISTRO}-gz-ros2-control \
     ros-${ROS_DISTRO}-ros2-control \
     ros-${ROS_DISTRO}-ros2-controllers \
-    ros-${ROS_DISTRO}-controller-manager \
-    ros-${ROS_DISTRO}-controller-manager-msgs \
-    ros-${ROS_DISTRO}-joint-state-broadcaster \
-    ros-${ROS_DISTRO}-forward-command-controller \
+    ros-${ROS_DISTRO}-joy* \
+    #ros-${ROS_DISTRO}-controller-manager \
+    #ros-${ROS_DISTRO}-controller-manager-msgs \
+    #ros-${ROS_DISTRO}-joint-state-broadcaster \
+    #ros-${ROS_DISTRO}-forward-command-controller \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
