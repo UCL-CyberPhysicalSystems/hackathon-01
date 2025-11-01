@@ -5,7 +5,7 @@
 ## Install docker images
 * build
 ```bash
-bash build.bash
+bash build.bash #Profiles: ros2, ros2cuda, isaacsim, all
 ```
 * run
 ```bash
@@ -17,6 +17,7 @@ bash run-ros2isaacsim.bash
 ```bash
 docker images && docker ps
 docker exec -it <container_id> bash
+docker exec -it $(docker container ls  | grep 'ros2:cuda' | awk '{print $1}') bash
 docker stop $(docker ps -a -q)
 docker system prune -f --volumes
 ```

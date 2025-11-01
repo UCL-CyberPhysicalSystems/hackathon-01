@@ -8,7 +8,7 @@ from sensor_msgs.msg import Imu
 import numpy as np
 import threading
 import math
-from math import cos, sin, tan, atan, atan2, pi
+from math import tan, atan
 
 observation = np.array([0.0, 0.0, 0.0], float) #x, y, yaw angle
 
