@@ -1,8 +1,10 @@
 IMAGE_NAME="ros2:cuda"
 
 xhost +
-docker run --name ros2cuda --entrypoint bash -it --runtime=nvidia --gpus all -e "ACCEPT_EULA=Y" --rm --network=host \
-    --device /dev/dri \
+docker run --name ros2cuda --entrypoint bash -it --rm --runtime=nvidia --gpus all \
+    -e "ACCEPT_EULA=Y" \
+    --network=host \
+    --ipc=host \
     -e "PRIVACY_CONSENT=Y" \
     -e "DISPLAY=$DISPLAY" \
     -e "QT_X11_NO_MITSHM=1" \

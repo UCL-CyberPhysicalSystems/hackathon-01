@@ -16,8 +16,12 @@ colcon build --base-paths src
 
 Run tracking simulator script
 ```bash
-cd /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/UI
-python3 path_tracking_simulator.py
+python3 /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/UI/path_tracking_simulator.py
+#TODO check the following logs
+ #QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'
+ #MESA: error: Failed to query drm device.
+ #glx: failed to create dri3 screen
+ #failed to load driver: iris
 ```
 
 Run the main lunch script in a new terminal
