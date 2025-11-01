@@ -1,0 +1,1 @@
+pyuic5 -o path_visualization_window.py path_visualization.ui

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>521</width>
+    <height>560</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Path Tracking Simulator</string>
+  </property>
+  <widget class="QGraphicsView" name="map_graphicsView">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>500</width>
+     <height>500</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>500</width>
+     <height>500</height>
+    </size>
+   </property>
+   <property name="baseSize">
+    <size>
+     <width>500</width>
+     <height>500</height>
+    </size>
+   </property>
+   <property name="verticalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOff</enum>
+   </property>
+   <property name="horizontalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOff</enum>
+   </property>
+   <property name="sceneRect">
+    <rectf>
+     <x>0.000000000000000</x>
+     <y>0.000000000000000</y>
+     <width>500.000000000000000</width>
+     <height>500.000000000000000</height>
+    </rectf>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="update_path_image_pushButton">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>520</y>
+     <width>141</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Update Path Image</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="publish_path_pushButton">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>520</y>
+     <width>101</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Publish Path</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>update_path_image_pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>update_path_image()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>80</x>
+     <y>542</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>182</x>
+     <y>534</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>publish_path_pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>publish_path()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>177</x>
+     <y>529</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>273</x>
+     <y>518</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>update_path_image()</slot>
+  <slot>pure_pursuit()</slot>
+  <slot>mpc()</slot>
+  <slot>publish_path()</slot>
+ </slots>
+</ui>
