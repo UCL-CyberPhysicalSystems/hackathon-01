@@ -146,6 +146,11 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     && rm -rf /var/lib/apt/lists/*
 
 
+#migth needs these tools for qt
+#qtcreator
+#pyqt5-dev-tools
+
+
 
 #TOTEST
 # #############################
