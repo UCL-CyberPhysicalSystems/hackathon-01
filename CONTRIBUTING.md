@@ -84,9 +84,8 @@ git rebase main
 # edit conflicting files with `vim` editor
 # git add .
 # git rebase --continue
-git push --force origin ISSUE_NUMBER_FEATURE_BRANCH
+git push --force-with-lease origin ISSUE_NUMBER_FEATURE_BRANCH
 ## OTHER COMMANDS
-git push --force origin ISSUE_NUMBER_FEATURE_BRANCH
 git pull --rebase origin ISSUE_NUMBER_FEATURE_BRANCH
 ```
 

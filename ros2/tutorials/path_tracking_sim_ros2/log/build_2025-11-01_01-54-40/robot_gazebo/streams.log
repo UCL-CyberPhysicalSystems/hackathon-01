@@ -1,0 +1,72 @@
+[0.008s] Invoking command in '/home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/build/robot_gazebo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/src/robot_simulation/robot_gazebo -DCMAKE_INSTALL_PREFIX=/home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo
+[0.055s] -- The C compiler identification is GNU 13.3.0
+[0.101s] -- The CXX compiler identification is GNU 13.3.0
+[0.114s] -- Detecting C compiler ABI info
+[0.192s] -- Detecting C compiler ABI info - done
+[0.199s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.199s] -- Detecting C compile features
+[0.199s] -- Detecting C compile features - done
+[0.208s] -- Detecting CXX compiler ABI info
+[0.285s] -- Detecting CXX compiler ABI info - done
+[0.290s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.290s] -- Detecting CXX compile features
+[0.291s] -- Detecting CXX compile features - done
+[0.300s] -- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.425s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.514s] -- Found xacro: 2.1.1 (/opt/ros/jazzy/share/xacro/cmake)
+[0.516s] -- Found rclpy: 7.1.5 (/opt/ros/jazzy/share/rclpy/cmake)
+[0.518s] -- Found ament_lint_auto: 0.17.3 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[0.592s] -- Added test 'copyright' to check source files copyright and LICENSE
+[0.594s] -- Added test 'flake8' to check Python code syntax and style conventions
+[0.594s] -- Configured 'flake8' exclude dirs and/or files: 
+[0.595s] -- Added test 'lint_cmake' to check CMake code style
+[0.595s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[0.597s] -- Added test 'xmllint' to check XML markup files
+[0.598s] -- Configuring done (0.6s)
+[0.599s] -- Generating done (0.0s)
+[0.600s] -- Build files have been written to: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/build/robot_gazebo
+[0.603s] Invoked command in '/home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/build/robot_gazebo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/src/robot_simulation/robot_gazebo -DCMAKE_INSTALL_PREFIX=/home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo
+[0.604s] Invoking command in '/home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/build/robot_gazebo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/build/robot_gazebo -- -j22 -l22
+[0.635s] Invoked command in '/home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/build/robot_gazebo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/build/robot_gazebo -- -j22 -l22
+[0.643s] Invoking command in '/home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/build/robot_gazebo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/build/robot_gazebo
+[0.648s] -- Install configuration: ""
+[0.648s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/launch
+[0.648s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/launch/main.launch.py
+[0.648s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/worlds
+[0.649s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/worlds/path_tracking.sdf
+[0.649s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/worlds/sun
+[0.649s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/worlds/sun/model-1_3.sdf
+[0.649s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/worlds/sun/model.sdf
+[0.649s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/worlds/sun/model-1_4.sdf
+[0.649s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/worlds/sun/model.config
+[0.649s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/worlds/sun/model-1_2.sdf
+[0.649s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/worlds/ground_plane
+[0.649s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/worlds/ground_plane/model-1_3.sdf
+[0.649s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/worlds/ground_plane/model.sdf
+[0.649s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/worlds/ground_plane/model-1_4.sdf
+[0.649s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/worlds/ground_plane/model.config
+[0.649s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/worlds/ground_plane/model-1_2.sdf
+[0.649s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/worlds/path_tracking_stage
+[0.649s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/worlds/path_tracking_stage/model.sdf
+[0.649s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/worlds/path_tracking_stage/model.config
+[0.649s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/worlds/path_tracking_stage/materials
+[0.649s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/worlds/path_tracking_stage/meshes
+[0.649s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/worlds/path_tracking_stage/meshes/path_tracking_stage.dae
+[0.650s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/worlds/path_tracking_stage/meshes/stage.png
+[0.650s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/worlds/path_tracking_stage/meshes/path_tracking_stage.stl
+[0.650s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/ament_index/resource_index/package_run_dependencies/robot_gazebo
+[0.650s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/ament_index/resource_index/parent_prefix_path/robot_gazebo
+[0.650s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/environment/ament_prefix_path.sh
+[0.650s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/environment/ament_prefix_path.dsv
+[0.650s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/environment/path.sh
+[0.650s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/environment/path.dsv
+[0.650s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/local_setup.bash
+[0.650s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/local_setup.sh
+[0.650s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/local_setup.zsh
+[0.650s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/local_setup.dsv
+[0.650s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/package.dsv
+[0.650s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/ament_index/resource_index/packages/robot_gazebo
+[0.650s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/cmake/robot_gazeboConfig.cmake
+[0.650s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/cmake/robot_gazeboConfig-version.cmake
+[0.650s] -- Installing: /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/install/robot_gazebo/share/robot_gazebo/package.xml
+[0.652s] Invoked command in '/home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/build/robot_gazebo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/hackathon-01/ros2/tutorials/path_tracking_sim_ros2/build/robot_gazebo

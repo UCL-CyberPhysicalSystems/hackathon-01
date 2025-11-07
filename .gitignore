@@ -7,11 +7,8 @@
 **/.venv**
 **/.ipynb_checkpoints**
 **/potential-motion-plan-release
-**/potential_based_diffusion_motion_planning 
-#TODO remove when mergning branch 10
-
 
 ##ros2
 **/build/*
 **/install/*
-**/log/*
+**/logs
