@@ -22,7 +22,7 @@ Visit: [kubeflow.arc-unified-ai.condenser.arc.ucl.ac.uk](https://kubeflow.arc-un
 Once logged in, create and configure your Jupyter Notebook workspace. You can also use the terminal to clone public repos. For example: `git clone https://github.com/UCL-CyberPhysicalSystems/hackathon-01.git`
 
 ## 🐳 Containers
-To host and distribute container images, you can use the [Github Container Registry (GHCR)](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
+To host and distribute container images, you can use the [GitHub Container Registry (GHCR)](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
 This registry allows you to store, manage, and version Docker images directly through GitHub for seamless integration with your CI/CD workflows. 
 
 Build Dockerfile container
