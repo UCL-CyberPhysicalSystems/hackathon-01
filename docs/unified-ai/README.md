@@ -25,16 +25,16 @@ Once logged in, create and configure your Jupyter Notebook workspace. You can al
 To host and distribute container images, you can use the [Github Container Registry (GHCR)](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
 This registry allows you to store, manage, and version Docker images directly through GitHub for seamless integration with your CI/CD workflows. 
 
-Build dockerfile container
+Build Dockerfile container
 ```bash
 docker build -t unifiedai:diffusion-motion-planning -f Dockerfile .
 ```
 
-Docker commands: images, ps, stop, remove
+Docker Management Commands
 ```bash
 docker images && docker ps
 docker exec -it <container_id> bash
 docker exec -it $(docker container ls  | grep 'unifiedai:diffusion-motion-planning' | awk '{print $1}') bash
-docker stop $(docker ps -a -q)
+docker stop $(docker ps -q)
 docker system prune -f --volumes
 ```

@@ -1,4 +1,4 @@
-# Dockerimage for https://github.com/UCL-CyberPhysicalSystems/hackathon-01/tree/main/notebooks/potential_based_diffusion_motion_planning
+# Docker image for https://github.com/UCL-CyberPhysicalSystems/hackathon-01/tree/main/notebooks/potential_based_diffusion_motion_planning
 
 FROM ghcr.io/ucl-arc-environments/kubeflow-notebook-images-jupyter-pytorch-cuda-arc:v1.0.11
 
@@ -52,4 +52,6 @@ RUN python3 -m pip install --no-cache-dir \
     mediapipe \
     imageio[ffmpeg]
 
+# Switch to default user `$NB_UID` is defined in base image
+USER $NB_UID
 
