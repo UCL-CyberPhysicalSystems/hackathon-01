@@ -51,7 +51,7 @@ Pushing container images
 ```bash
 docker push ghcr.io/ucl-cyberphysicalsystems/hackathon-01/ros2uai:v0.0.2
 ```
-Go to packages https://github.com/orgs/UCL-CyberPhysicalSystems/packages and change visibility to public
+Go to packages https://github.com/orgs/UCL-CyberPhysicalSystems/packages and change visibility to public.
 
 
 ### Connecting to Unified-AI Kubeflow
@@ -76,7 +76,7 @@ docker rmi --force <ID>
 * Using private images at https://github.com/orgs/UCL-CyberPhysicalSystems/packages/container/package/hackathon-01%2Fros2uai
 > ImagePullBackOff: Back-off pulling image "ghcr.io/ucl-cyberphysicalsystems/hackathon-01/ros2uai:v0.0.1": ErrImagePull: failed to pull and unpack image "ghcr.io/ucl-cyberphysicalsystems/hackathon-01/ros2uai:v0.0.1": failed to resolve reference "ghcr.io/ucl-cyberphysicalsystems/hackathon-01/ros2uai:v0.0.1": unexpected status from HEAD request to https://ghcr.io/v2/ucl-cyberphysicalsystems/hackathon-01/ros2uai/manifests/v0.0.1: 403 Forbidden
 
-* xcb display not availble
+* xcb display not available
 > ros2 run turtlesim turtlesim_node
 qt.qpa.xcb: could not connect to display 
 qt.qpa.plugin: Could not load the Qt platform plugin "xcb" in "" even though it was found.

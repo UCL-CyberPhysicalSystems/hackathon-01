@@ -25,10 +25,6 @@ RUN apt-get update -qq && apt-get upgrade -y && \
     python3-colcon-common-extensions \
     && rm -rf /var/lib/apt/lists/*
 
-# Downgrade libbrotli1 to fix compatibility issues in Isaac Sim 4.5.0
-# But it might cause some issues in Isaac Sim with something like streaming or caching.
-# https://forums.developer.nvidia.com/t/docker-nvcr-io-nvidia-isaac-sim-4-5-0-cant-install-ros2-humble/323574
-
 # Install ROS2 packages
 RUN apt-get update && apt-get install -y \
     ros-${ROS_DISTRO}-turtlesim \
@@ -43,7 +39,6 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     bash-completion \
     cmake \
     git \
-    git-core \
     tree \
     lsb-release \
     wget \
@@ -84,13 +79,11 @@ RUN python3 -m pip install --no-cache-dir \
     mediapipe \
     imageio[ffmpeg]
 
+# Switch to default user `$NB_UID` is defined in base image
+USER $NB_UID
 
 # ROS2 Environment Setup and sourcing
 SHELL ["/bin/bash", "-c"]
 RUN echo "" >> ~/.bashrc
 RUN echo "## ROS2" >> ~/.bashrc
 RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
-
-# Switch to default user `$NB_UID` is defined in base image
-USER $NB_UID
-
