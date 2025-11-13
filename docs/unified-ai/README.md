@@ -27,15 +27,14 @@ This registry allows you to store, manage, and version Docker images directly th
 
 Build Dockerfile container
 ```bash
-docker build -t ros2uai:v0.0.1 -f Dockerfile .
+docker build -t ros2uai:v0.0.2 -f Dockerfile .
 ```
 
-
 ## Authenticating with a personal access token (classic)
-1. Create `Personal access tokens (classic)` https://github.com/settings/tokens
-	Select the read:packages scope to download container images and read their metadata.  
-	Select the write:packages scope to download and upload container images and read and write their metadata.  
-	Select the delete:packages scope to delete container images.  
+1. Create `Personal access tokens (classic)` https://github.com/settings/tokens  
+	* Select the read:packages scope to download container images and read their metadata.  
+	* Select the write:packages scope to download and upload container images and read and write their metadata.  
+	* Select the delete:packages scope to delete container images.  
 2. Save your personal access token (classic). We recommend saving your token as an environment variable.
 3. Using the CLI for your container type, sign in to the Container registry service at ghcr.io.
 ```
@@ -46,21 +45,20 @@ echo $CR_PAT | docker login ghcr.io -u USERNAME --password-stdin
 ## Pushing container images 
 Tag your Docker image using the image ID and your desired image name and hosting destination.
 ```bash
-docker tag ros2uai:v0.0.1 ghcr.io/ucl-cyberphysicalsystems/hackathon-01/ros2uai:v0.0.1
+docker tag ros2uai:v0.0.2 ghcr.io/ucl-cyberphysicalsystems/hackathon-01/ros2uai:v0.0.2
 ```
 Pushing container images
 ```bash
-docker push ghcr.io/ucl-cyberphysicalsystems/hackathon-01/ros2uai:v0.0.1
+docker push ghcr.io/ucl-cyberphysicalsystems/hackathon-01/ros2uai:v0.0.2
 ```
 Go to packages https://github.com/orgs/UCL-CyberPhysicalSystems/packages and change visibility to public
 
 
-## Unified AI
-
+## Connecting to Unified-AI Kubeflow
 1. Connect to VPN to access https://kubeflow.arc-unified-ai.condenser.arc.ucl.ac.uk
 2. Create new notebook and set up custom image
 ```bash
-ghcr.io/ucl-cyberphysicalsystems/hackathon-01/ros2uai:v0.0.1
+ghcr.io/ucl-cyberphysicalsystems/hackathon-01/ros2uai:v0.0.2
 ```
 
 
@@ -76,7 +74,15 @@ docker rmi --force <ID>
 ```
 
 ## Common errors
-Using privat images
-```
-ImagePullBackOff: Back-off pulling image "ghcr.io/ucl-cyberphysicalsystems/hackathon-01/ros2uai:v0.0.1": ErrImagePull: failed to pull and unpack image "ghcr.io/ucl-cyberphysicalsystems/hackathon-01/ros2uai:v0.0.1": failed to resolve reference "ghcr.io/ucl-cyberphysicalsystems/hackathon-01/ros2uai:v0.0.1": unexpected status from HEAD request to https://ghcr.io/v2/ucl-cyberphysicalsystems/hackathon-01/ros2uai/manifests/v0.0.1: 403 Forbidden
-```
+Using private images at https://github.com/orgs/UCL-CyberPhysicalSystems/packages/container/package/hackathon-01%2Fros2uai
+> ImagePullBackOff: Back-off pulling image "ghcr.io/ucl-cyberphysicalsystems/hackathon-01/ros2uai:v0.0.1": ErrImagePull: failed to pull and unpack image "ghcr.io/ucl-cyberphysicalsystems/hackathon-01/ros2uai:v0.0.1": failed to resolve reference "ghcr.io/ucl-cyberphysicalsystems/hackathon-01/ros2uai:v0.0.1": unexpected status from HEAD request to https://ghcr.io/v2/ucl-cyberphysicalsystems/hackathon-01/ros2uai/manifests/v0.0.1: 403 Forbidden
+
+> ros2 run turtlesim turtlesim_node
+qt.qpa.xcb: could not connect to display 
+qt.qpa.plugin: Could not load the Qt platform plugin "xcb" in "" even though it was found.
+This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.
+Available platform plugins are: eglfs, linuxfb, minimal, minimalegl, offscreen, vnc, xcb.
+[ros2run]: Aborted
+#SORTED
+jovyan@ghcrv3-0:~$ export QT_QPA_PLATFORM=offscreen
+jovyan@ghcrv3-0:~$ ros2 run turtlesim turtlesim_node
