@@ -86,3 +86,11 @@ Available platform plugins are: eglfs, linuxfb, minimal, minimalegl, offscreen, 
 #SORTED
 jovyan@ghcrv3-0:~$ export QT_QPA_PLATFORM=offscreen
 jovyan@ghcrv3-0:~$ ros2 run turtlesim turtlesim_node
+
+* rqt: could not connect to display 
+> rqt
+could not connect to display 
+This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.
+Available platform plugins are: eglfs, linuxfb, minimal, minimalegl, offscreen, vnc, xcb.
+
+
