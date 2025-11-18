@@ -26,8 +26,12 @@ To host and distribute container images, you can use the [GitHub Container Regis
 This registry allows you to store, manage, and version Docker images directly through GitHub for seamless integration with your CI/CD workflows. 
 
 ### Build Dockerfile container
+```
+VERSION_ID=v0.0.3
+```
+
 ```bash
-docker build -t ros2uai:v0.0.2 -f Dockerfile .
+docker build -t ros2uai:${VERSION_ID} -f Dockerfile .
 ```
 
 ### Authenticating with a personal access token (classic)
@@ -45,11 +49,11 @@ echo $CR_PAT | docker login ghcr.io -u USERNAME --password-stdin
 ### Pushing container images 
 Tag your Docker image using the image ID and your desired image name and hosting destination.
 ```bash
-docker tag ros2uai:v0.0.2 ghcr.io/ucl-cyberphysicalsystems/hackathon-01/ros2uai:v0.0.2
+docker tag ros2uai:${VERSION_ID} ghcr.io/ucl-cyberphysicalsystems/hackathon-01/ros2uai:${VERSION_ID}
 ```
 Pushing container images
 ```bash
-docker push ghcr.io/ucl-cyberphysicalsystems/hackathon-01/ros2uai:v0.0.2
+docker push ghcr.io/ucl-cyberphysicalsystems/hackathon-01/ros2uai:${VERSION_ID}
 ```
 Go to packages https://github.com/orgs/UCL-CyberPhysicalSystems/packages and change visibility to public.
 
@@ -58,7 +62,7 @@ Go to packages https://github.com/orgs/UCL-CyberPhysicalSystems/packages and cha
 1. Connect to VPN to access https://kubeflow.arc-unified-ai.condenser.arc.ucl.ac.uk
 2. Create new notebook and set up custom image
 ```bash
-ghcr.io/ucl-cyberphysicalsystems/hackathon-01/ros2uai:v0.0.2
+ghcr.io/ucl-cyberphysicalsystems/hackathon-01/ros2uai:${VERSION_ID}
 ```
 
 ## Docker Management Commands

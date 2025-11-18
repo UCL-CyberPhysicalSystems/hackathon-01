@@ -1,5 +1,3 @@
-# Docker image for https://github.com/UCL-CyberPhysicalSystems/hackathon-01/tree/main/notebooks/potential_based_diffusion_motion_planning
-
 FROM ghcr.io/ucl-arc-environments/kubeflow-notebook-images-jupyter-pytorch-cuda-arc:v1.0.11
 
 # Switch to root for package installation
