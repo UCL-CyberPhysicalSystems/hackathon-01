@@ -1,7 +1,12 @@
-# UCL infrascture
+# UCL infrastructure
 
-The following diagram illustrates the infrastructure for the hackathon. UCL East hosts a server connected to the sensors, with data streamed via the ROSBridge Suite and the Zenoh ROS 2 DDS bridge. A Zenoh router with 10 GbE connectivity will link this to the UCL ARC server. The ARC server will run containers using ROS 2 Humble on Ubuntu 22.04, where 5–10 participants will be able to access the sensor data through the ROSBridge Suite.
+The following diagram illustrates the infrastructure for the hackathon. UCL East hosts a server connected to the sensors (lasers, IMUs, cameras, etc), with data streamed via the ROSBridge-suite and the Zenoh ROS 2 DDS bridge (sample rate and datasize to be tested). A Zenoh router with 10 GbE connectivity will link G40 server to the UCL ARC platform (condender and unified-ai). 
+The ARC platforms will run containers using ROS 2 Humble on Ubuntu 22.04, where 5–10 participants will be able to access the sensor data through the ROSBridge Suite to visualise it, recognise/segmnt objecives of live video streaming, and visualise data.
 
 ![fig](cyber-physical-hackathon-network.svg)
 
+## Resources
+* Dockefiles: [Dockerfile-ros2](https://github.com/UCL-CyberPhysicalSystems/hackathon-01/blob/main/ros2/Dockerfile-ros2) [Dockerfile-ros2-cuda](https://github.com/UCL-CyberPhysicalSystems/hackathon-01/blob/main/ros2/Dockerfile-ros2-cuda)
+* Zenoh: Zero Overhead Network Protocol > [Zenoh router](https://zenoh.io/docs/getting-started/installation/)
+* [UCL Virtual Private Network (VPN)](https://www.ucl.ac.uk/isd/services/get-connected/ucl-virtual-private-network-vpn)
 
