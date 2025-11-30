@@ -8,32 +8,32 @@ The aim is to enable UCL teams to explore cyber-physical systems, embodied AI, a
 Additionally, these hackathons aim to spark new projects and collaborations that may lead to innovative applications for existing sensors, robots, and GPU servers, extending their use beyond current domains such as manufacturing, aerospace, healthcare, and security.
 
 ### Hackathon 1: Preliminary Small Hackathon for Feasibility and Idea Generation
-* WHO: 5 to 10 ARC staff, including someone from Environments to assist with setting up VMs. Other useful participants would include staff involved in current projects using live data, and those with knowledge of ROS.   
-* WHAT: Address initial issues in network connectivity, VMs, and ROS. Generate ideas for Hackathon 2, assessing feasibility and planning the necessary work in preparation.    
-* WHEN: Late January 2026 (FYI: TIP dates are 14–15 January 2026).   
-* WHERE: UCL Here East (G40).    
+WHO: 5 to 10 ARC staff, including someone from Environments to assist with setting up VMs. Other useful participants would include staff involved in current projects using live data, and those with knowledge of ROS.   
+WHAT: Address initial issues in network connectivity, VMs, and ROS. Generate ideas for Hackathon 2, assessing feasibility and planning the necessary work in preparation.    
+WHEN: Late January 2026 (FYI: TIP dates are 14–15 January 2026).   
+WHERE: UCL Here East (G40).    
 
 ### Hackathon 2: Larger Hackathon to Explore Ideas and Create Projects 
-* WHO: 20 to 30 ARC staff and open to anyone interested, ideally including all attendees from Hackathon 1.    
-* WHAT: Explore project ideas in key areas such as:  Data (collection, processing, visualisation), Machine learning applied to live data, Live data infrastructure and security, Robot control.    
-* WHEN: Late April 2026 (FYI: TIP dates are 15–16 April 2026); or Late July 2026 (FYI: TIP dates are 7–8 July 2026).    
-* WHERE: UCL Here East (G40).     
+WHO: 20 to 30 ARC staff and open to anyone interested, ideally including all attendees from Hackathon 1.    
+WHAT: Explore project ideas in key areas such as:  Data (collection, processing, visualisation), Machine learning applied to live data, Live data infrastructure and security, Robot control.    
+WHEN: Late April 2026 (FYI: TIP dates are 15–16 April 2026); or Late July 2026 (FYI: TIP dates are 7–8 July 2026).    
+WHERE: UCL Here East (G40).     
 
 ## :sparkles: Organisers, participants, and collaborators.
 
 * ARC: UCL Advanced Research Computing Centre:    
-Emily Dubrovska, e.dubrovska@ucl.ac.uk
-Yagmur Ozdemir <yagmur.idil.ozdemir@ucl.ac.uk> 
-Marlon Wijeyasinghe <m.wijeyasinghe@ucl.ac.uk>
-Ruaridh Gollifer <r.gollifer@ucl.ac.uk>
-James Legg <j.legg@ucl.ac.uk> 
-Samantha Ahern, <s.ahern@ucl.ac.uk> 
-Miguel Xochicale, <m.xochicale@ucl.ac.uk>
-James Hetherington <j.hetherington@ucl.ac.uk>
+Emily Dubrovska, 
+Yagmur Ozdemir, 
+Marlon Wijeyasinghe, 
+Ruaridh Gollifer, 
+James Legg, 
+Samantha Ahern, 
+Miguel Xochicale, 
+James Hetherington 
 
 * CEGE: UCL Civil, Environmental and Geomatic Engineering:    
-Mickey Li, <mickey.li@ucl.ac.uk>
-Chris Bendkowski,  <christopher.bendkowski.18@ucl.ac.uk>
+Mickey Li, 
+Chris Bendkowski
 
 ## :school: Express interest
 Registration is free. 
