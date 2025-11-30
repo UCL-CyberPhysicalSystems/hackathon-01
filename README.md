@@ -22,18 +22,18 @@ WHERE: UCL Here East (G40).
 ## :sparkles: Organisers, participants, and collaborators.
 
 * ARC: UCL Advanced Research Computing Centre:    
-Emily Dubrovska, 
-Yagmur Ozdemir, 
-Marlon Wijeyasinghe, 
-Ruaridh Gollifer, 
-James Legg, 
-Samantha Ahern, 
-Miguel Xochicale, 
-James Hetherington 
+[Emily Dubrovska](https://github.com/pineapple-cat), 
+[Yagmur Ozdemir](https://github.com/yidilozdemir), 
+[Marlon Wijeyasinghe](https://github.com/mwij02), 
+[Ruaridh Gollifer](https://github.com/ruaridhg), 
+[James Legg](https://github.com/cjlegg), 
+[Samantha Ahern](https://github.com/quirksahern), 
+[Miguel Xochicale](https://github.com/mxochicale), 
+[James Hetherington](https://github.com/jamespjh) 
 
 * CEGE: UCL Civil, Environmental and Geomatic Engineering:    
-Mickey Li, 
-Chris Bendkowski
+[Mickey Li](https://github.com/mhl787156), 
+[Chris Bendkowski](https://github.com/ctbend)
 
 ## :school: Express interest
 Registration is free. 
