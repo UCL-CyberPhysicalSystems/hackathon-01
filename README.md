@@ -8,16 +8,16 @@ The aim is to enable UCL teams to explore cyber-physical systems, embodied AI, a
 Additionally, these hackathons aim to spark new projects and collaborations that may lead to innovative applications for existing sensors, robots, and GPU servers, extending their use beyond current domains such as manufacturing, aerospace, healthcare, and security.
 
 ### Hackathon 1: Preliminary Small Hackathon for Feasibility and Idea Generation
-WHO: 5–6 ARC staff, including someone from Environments to assist with setting up VMs. Other useful participants would include staff involved in current projects using live data, and those with knowledge of ROS.   
-WHAT: Address initial issues in network connectivity, VMs, and ROS. Generate ideas for Hackathon 2, assessing feasibility and planning the necessary work in preparation.    
-WHEN: Late January 2026 (FYI: TIP dates are 14–15 January 2026).   
-WHERE: UCL Here East (G40).    
+* WHO: 5 to 10 ARC staff, including someone from Environments to assist with setting up VMs. Other useful participants would include staff involved in current projects using live data, and those with knowledge of ROS.   
+* WHAT: Address initial issues in network connectivity, VMs, and ROS. Generate ideas for Hackathon 2, assessing feasibility and planning the necessary work in preparation.    
+* WHEN: Late January 2026 (FYI: TIP dates are 14–15 January 2026).   
+* WHERE: UCL Here East (G40).    
 
 ### Hackathon 2: Larger Hackathon to Explore Ideas and Create Projects 
-WHO: 20–30 ARC staff — open to anyone interested, though ideally including all attendees from Hackathon 1.    
-WHAT: Explore project ideas in key areas such as:  Data (collection, processing, visualisation), Machine learning applied to live data, Live data infrastructure and security, Robot control.    
-WHEN: Late April 2026 (FYI: TIP dates are 15–16 April 2026); or Late July 2026 (FYI: TIP dates are 7–8 July 2026).    
-WHERE: UCL Here East (G40).     
+* WHO: 20 to 30 ARC staff and open to anyone interested, ideally including all attendees from Hackathon 1.    
+* WHAT: Explore project ideas in key areas such as:  Data (collection, processing, visualisation), Machine learning applied to live data, Live data infrastructure and security, Robot control.    
+* WHEN: Late April 2026 (FYI: TIP dates are 15–16 April 2026); or Late July 2026 (FYI: TIP dates are 7–8 July 2026).    
+* WHERE: UCL Here East (G40).     
 
 ## :sparkles: Organisers, participants, and collaborators.
 
@@ -43,20 +43,20 @@ You can express your interest by commenting on this discussion [ticket](https://
 * [ ] GitHub username (or [sign up](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account) for a GitHub account if you don’t have one).
 * [ ] Participants must bring their own computers running Linux, macOS or Windows, with either a CPU or GPU. Machines with GPUs are preferred for model prototyping. The minimum laptop requirements are: 8 CPU cores, 16 GB RAM, 30 GB of free disk space
 * [ ] (Optional) Docker installed and configured with the following allocated resources: 8 CPU cores and 16 GB memory.
-* [ ] Set up minimal ROS2 VM, test on ARC infrastucture ([dockerfile](https://github.com/mxochicale/nvidia-open-source-robot-lab/blob/main/Dockerfile))
-* [ ] Test [zenoh bridge](https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds), VPNs for connectivity between local networks
+* [ ] (To discuss) Set up minimal ROS2 VM, test on ARC infrastucture ([dockerfile](https://github.com/mxochicale/nvidia-open-source-robot-lab/blob/main/Dockerfile))
+* [ ] (To discuss) Test [zenoh bridge](https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds), VPNs for connectivity between local networks
 
 ## :date: Agenda
-The following is a general agenda that may be subject to slight changes.
+The following agenda is a general guide and may be subject to slight changes. 
+In essence, a best practice is to document progress as we hack.
 
-### Day 01
 | Time  | Activity  | 
 | --- |--- |
 | 08:30 - 09:00 | Arrival and networking | 
 | 09:00 – 09:15 | Welcome message | 
 | 09:15 – 10:30 | Introduction (document as you hack) [:link:](docs/agenda/day01.md) |
 | 10:30 - 10:45 | Coffee break | 
-| 10:45 - 12:30 | Hacking:  [:link:](docs/agenda/day01.md |
+| 10:45 - 12:30 | Hacking:  [:link:](docs/agenda/day01.md) |
 | 12:30 - 13:30 | Lunch break | 
 | 13:30 - 15:00 | Hacking: [:link:](docs/agenda/day01.md) |
 | 15:00 - 15:15 | Coffee break | 
