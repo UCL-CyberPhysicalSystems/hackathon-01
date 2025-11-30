@@ -35,21 +35,18 @@ James Hetherington <j.hetherington@ucl.ac.uk>
 Mickey Li, <mickey.li@ucl.ac.uk>
 Chris Bendkowski,  <christopher.bendkowski.18@ucl.ac.uk>
 
-
 ## :school: Express interest
 Registration is free. 
 You can express your interest by commenting on this discussion [ticket](https://github.com/UCL-CyberPhysicalSystems/hackathon-01/discussions/categories/express-of-interest) with your GitHub username, your availability, the skills you have, and the ones you’d like to learn.
 
-## :computer: TODISCUSS Pre-requisites 
-* [ ] Highlight Hackathon 1 in Q4 2025 planning meeting to ensure attending staff will have availability. 
-* [ ] Set up minimal ROS2 VM, test on ARC infrastucture ([dockerfile](https://github.com/mxochicale/nvidia-open-source-robot-lab/blob/main/Dockerfile))
-* [ ] Test [zenoh bridge](https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds), VPNs for connectivity between local networks 
-* [ ] Participants are required to bring their own computers, either with a CPU or GPU. Computers with GPUs are ideal for prototyping models.
-* [ ] VMs with GPUs? 
+## :computer: Pre-requisites 
 * [ ] GitHub username (or [sign up](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account) for a GitHub account if you don’t have one).
-* [ ] Next meeting early November 2025 
+* [ ] Participants must bring their own computers running Linux, macOS or Windows, with either a CPU or GPU. Machines with GPUs are preferred for model prototyping. The minimum laptop requirements are: 8 CPU cores, 16 GB RAM, 30 GB of free disk space
+* [ ] (Optional) Docker installed and configured with the following allocated resources: 8 CPU cores and 16 GB memory.
+* [ ] Set up minimal ROS2 VM, test on ARC infrastucture ([dockerfile](https://github.com/mxochicale/nvidia-open-source-robot-lab/blob/main/Dockerfile))
+* [ ] Test [zenoh bridge](https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds), VPNs for connectivity between local networks
 
-## :date: TODISCUSS Agenda
+## :date: Agenda
 The following is a general agenda that may be subject to slight changes.
 
 ### Day 01
@@ -57,29 +54,15 @@ The following is a general agenda that may be subject to slight changes.
 | --- |--- |
 | 08:30 - 09:00 | Arrival and networking | 
 | 09:00 – 09:15 | Welcome message | 
-| 09:15 – 10:30 | Introduction (document as you hack) [:link:](day01.md) |
+| 09:15 – 10:30 | Introduction (document as you hack) [:link:](docs/agenda/day01.md) |
 | 10:30 - 10:45 | Coffee break | 
-| 10:45 - 12:30 | Hacking:  [:link:](day01.md) |
+| 10:45 - 12:30 | Hacking:  [:link:](docs/agenda/day01.md |
 | 12:30 - 13:30 | Lunch break | 
-| 13:30 - 15:00 | Hacking: [:link:](day01.md) |
+| 13:30 - 15:00 | Hacking: [:link:](docs/agenda/day01.md) |
 | 15:00 - 15:15 | Coffee break | 
-| 15:15 - 17:00 | Hacking:  [:link:](day01.md)  | 
-| 17:30 onwards | Social |
-
-### Day 02
-| Time  | Activity  | 
-| --- |--- |
-| 08:30 - 09:00 | Arrival and networking | 
-| 09:00 – 09:15 | Welcome message | 
-| 09:00 – 10:30 | Hacking: [:link:](day02.md) |
-| 10:30 - 10:45 | Coffee break | 
-| 10:45 - 12:30 | Hacking: [:link:](day02.md) |
-| 12:30 - 13:30 | Lunch break | 
-| 13:30 - 15:00 | Hacking: [:link:](day02.md) |
-| 15:00 - 15:15 | Coffee break | 
-| 15:15 - 16:30 | Lightning talks  | 
+| 15:15 - 17:00 | Hacking:  [:link:](docs/agenda/day01.md)  | 
 | 16:45 - 17:00 | Clonclusions and call for action! |
-
+| 17:30 onwards | Social |
 
 ## :family: Forum
 We are using [Discussions](https://github.com/UCL-CyberPhysicalSystems/hackathon-01/discussions) to explore activities, skills, demo requirements, and brainstorm ideas. 
