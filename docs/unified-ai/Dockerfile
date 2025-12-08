@@ -9,12 +9,42 @@ RUN apt-get update -qq && apt-get install -y software-properties-common curl && 
     curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg && \
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | tee /etc/apt/sources.list.d/ros2.list > /dev/null
 
+# Install system dependencies first including gnupg
+RUN apt-get update && apt-get install --no-install-recommends -y \
+    build-essential \
+    bash-completion \
+    cmake \
+    git \
+    tree \
+    lsb-release \
+    wget \
+    less \
+    ffmpeg \
+    udev \
+    curl \
+    vim \
+    xclip \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
+    gnupg \
+    ca-certificates \
+    dpkg \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+
+# zenoh: Download, verify and install properly
+RUN curl -L -o /tmp/zenoh.deb "https://github.com/eclipse-zenoh/zenoh/releases/download/zenoh-0.11.0.0/zenoh_0.11.0.0-1_amd64.deb" && \
+    dpkg-deb -I /tmp/zenoh.deb && \
+    dpkg -i /tmp/zenoh.deb || true && \
+    apt-get install -f -y && \
+    rm /tmp/zenoh.deb && \
+    rm -rf /var/lib/apt/lists/*
 
 # General ROS2 environment variables
 ENV ROS_DISTRO=humble
 ENV ROS_VERSION=2
 ENV ROS_PYTHON_VERSION=3
-
 
 # Install ROS 2 distro and colcon deps
 RUN apt-get update -qq && apt-get upgrade -y && \

@@ -7,30 +7,23 @@ For more information, refer to the [RDSS Live Storage Access Guide](https://www.
 
 🔧 Setup Instructions
 
-1. Request an Account   
-Contact:  
-  * silvia.ramos@ucl.ac.uk  
-  * a.esterson@ucl.ac.uk
-
-2. Connect to the UCL VPN
+1. Request an Account to silvia.ramos@ucl.ac.uk and a.esterson@ucl.ac.uk
+2. Connect to the UCL VPN.
 Follow the guide: [UCL Virtual Private Network](https://www.ucl.ac.uk/isd/services/get-connected/ucl-virtual-private-network-vpn)
-
 3. Access the Kubeflow Interface
 Visit: [kubeflow.arc-unified-ai.condenser.arc.ucl.ac.uk](https://kubeflow.arc-unified-ai.condenser.arc.ucl.ac.uk)
-
 4. Create a Jupyter Notebook
-Once logged in, create and configure your Jupyter Notebook workspace. You can also use the terminal to clone public repos. For example: `git clone https://github.com/UCL-CyberPhysicalSystems/hackathon-01.git`
+	* Once logged in, create and configure your Jupyter Notebook workspace.
+	* You can also use the terminal to clone public repos.
+	* For example: `git clone https://github.com/UCL-CyberPhysicalSystems/hackathon-01.git`
 
 ## 🐳 Containers
 To host and distribute container images, you can use the [GitHub Container Registry (GHCR)](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
 This registry allows you to store, manage, and version Docker images directly through GitHub for seamless integration with your CI/CD workflows. 
 
 ### Build Dockerfile container
-```
-VERSION_ID=v0.0.3
-```
-
 ```bash
+VERSION_ID=v0.0.4
 docker build -t ros2uai:${VERSION_ID} -f Dockerfile .
 ```
 
@@ -42,8 +35,9 @@ docker build -t ros2uai:${VERSION_ID} -f Dockerfile .
 2. Save your personal access token (classic). We recommend saving your token as an environment variable.
 3. Using the CLI for your container type, sign in to the Container registry service at ghcr.io.
 ```
+GITHUB_USERNAME=YOUR_ID
 export CR_PAT=YOUR_TOKEN
-echo $CR_PAT | docker login ghcr.io -u USERNAME --password-stdin
+echo ${CR_PAT} | docker login ghcr.io -u ${GITHUB_USERNAME} --password-stdin
 ```
 
 ### Pushing container images 
