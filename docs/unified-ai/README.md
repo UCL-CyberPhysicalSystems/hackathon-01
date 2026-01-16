@@ -5,7 +5,7 @@ The Unified-AI Kubeflow Notebooks environment provides Jupyter Notebooks for exp
 Data within the Kubeflow platform is managed through the Research Data Storage Service (RDSS) — UCL’s official storage service for research data. 
 For more information, refer to the [RDSS Live Storage Access Guide](https://www.ucl.ac.uk/advanced-research-computing/platforms-services/research-data-storage-service/live-storage-access-guide).
 
-🔧 Setup Instructions
+🔧 Setup Instructions 
 
 1. Request an Account to silvia.ramos@ucl.ac.uk and a.esterson@ucl.ac.uk
 2. Connect to the UCL VPN.
@@ -23,8 +23,33 @@ This registry allows you to store, manage, and version Docker images directly th
 
 ### Build Dockerfile container
 ```bash
+PROJECT_NAME=ros2uai
 VERSION_ID=v0.0.4
-docker build -t ros2uai:${VERSION_ID} -f Dockerfile .
+docker build -t ${PROJECT_NAME}:${VERSION_ID} -f Dockerfile .
+```
+See the built image with `docker image` command
+```bash
+#docker system prune -f --volumes
+#docker images
+IMAGE           ID             DISK USAGE   CONTENT SIZE   EXTRA
+ros2uai:v0.0.4  <>             23.6GB       6.26GB   
+```
+
+### Test image locally
+```bash
+# Run the container in terminal 1
+docker run -it --rm ${PROJECT_NAME}:${VERSION_ID} bash
+
+# Inside the container, test the installation
+env | grep ROS #see what Python version you have along with the ROS 2 distribution that is installed
+dpkg -l | grep ros- # see a description of all the ROS 2 packages installed on your system
+
+# Run ROS 2 with zenoh
+ros2 run demo_nodes_cpp talker
+
+# Terminal 2 (attach to same container)
+docker exec -it $(docker container ls  | grep "${PROJECT_NAME}:${VERSION_ID}" | awk '{print $1}') bash
+ros2 run demo_nodes_cpp listener
 ```
 
 ### Authenticating with a personal access token (classic)
@@ -43,11 +68,11 @@ echo ${CR_PAT} | docker login ghcr.io -u ${GITHUB_USERNAME} --password-stdin
 ### Pushing container images 
 Tag your Docker image using the image ID and your desired image name and hosting destination.
 ```bash
-docker tag ros2uai:${VERSION_ID} ghcr.io/ucl-cyberphysicalsystems/hackathon-01/ros2uai:${VERSION_ID}
+docker tag ${PROJECT_NAME}:${VERSION_ID} ghcr.io/ucl-cyberphysicalsystems/hackathon-01/${PROJECT_NAME}:${VERSION_ID}
 ```
 Pushing container images
 ```bash
-docker push ghcr.io/ucl-cyberphysicalsystems/hackathon-01/ros2uai:${VERSION_ID}
+docker push ghcr.io/ucl-cyberphysicalsystems/hackathon-01/${PROJECT_NAME}:${VERSION_ID}
 ```
 Go to packages https://github.com/orgs/UCL-CyberPhysicalSystems/packages and change visibility to public.
 
@@ -91,4 +116,20 @@ could not connect to display
 This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.
 Available platform plugins are: eglfs, linuxfb, minimal, minimalegl, offscreen, vnc, xcb.
 
+## TO-HACK
+* Multi-stage Build Version (Smaller Image):
+```bash
+# Build stage
+FROM ubuntu:22.04 as builder
 
+# Install build dependencies and build zenoh
+# ... (similar build commands as above)
+
+# Final stage
+FROM ghcr.io/ucl-arc-environments/kubeflow-notebook-images-jupyter-pytorch-cuda-arc:v1.0.11
+
+# Copy only the built artifacts from builder
+COPY --from=builder /usr/local/lib/zenoh /usr/local/lib/zenoh
+COPY --from=builder /root/.cargo /home/jovyan/.cargo
+# ... rest of final image
+```
