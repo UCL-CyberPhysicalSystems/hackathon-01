@@ -8,20 +8,23 @@ The aim is to enable UCL teams to explore cyber-physical systems, embodied AI, a
 Additionally, these hackathons aim to spark new projects and collaborations that may lead to innovative applications for existing sensors, robots, and GPU servers, extending their use beyond current domains such as manufacturing, aerospace, healthcare, and security.
 
 ### Hackathon 1: Preliminary Small Hackathon for Feasibility and Idea Generation
-WHO: 5 to 10 ARC staff, including someone from Environments to assist with setting up VMs. Other useful participants would include staff involved in current projects using live data, and those with knowledge of ROS.   
+WHO: 5 to 10 ARC staff, including someone from Environments to assist with setting up VMs. Participants would also include staff involved in projects using live data, and those with knowledge of ROS.   
 WHAT: Address initial issues in network connectivity, VMs, and ROS. Generate ideas for Hackathon 2, assessing feasibility and planning the necessary work in preparation.    
-WHEN: Late January 2026 (FYI: TIP dates are 14–15 January 2026).   
-WHERE: UCL Here East (G40).    
+WHEN: 2 March 2026 (FYI: TIP dates are 14–15 January 2026, 15-16 April 2026).   
+WHERE: UCL Here East (G40). 8-9 East Bay Lane, Queen Elizabeth Olympic Park, London, E15 2GW. [google-maps](https://maps.app.goo.gl/nvxAcyUEg3A4ae6J8)
 
 ### Hackathon 2: Larger Hackathon to Explore Ideas and Create Projects 
 WHO: 20 to 30 ARC staff and open to anyone interested, ideally including all attendees from Hackathon 1.    
 WHAT: Explore project ideas in key areas such as:  Data (collection, processing, visualisation), Machine learning applied to live data, Live data infrastructure and security, Robot control.    
-WHEN: Late April 2026 (FYI: TIP dates are 15–16 April 2026); or Late July 2026 (FYI: TIP dates are 7–8 July 2026).    
-WHERE: UCL Here East (G40).     
+WHEN: Late April 2026 (FYI: TIP dates 15–16 April 2026); or late July 2026 (FYI: TIP dates 7–8 July 2026); or late Oct (FYI: TIP dates mid Oct 2026) 
+WHERE: UCL Here East (G40). 8-9 East Bay Lane, Queen Elizabeth Olympic Park, London, E15 2GW. [google-maps](https://maps.app.goo.gl/nvxAcyUEg3A4ae6J8)
 
 ## :sparkles: Organisers, participants, and collaborators.
 
 * ARC: UCL Advanced Research Computing Centre:    
+[Mack Nixon]((https://github.com/), 
+[Mahmoud Abdelrazek](https://github.com/), 
+[Sunny Park](https://github.com/), 
 [Emily Dubrovska](https://github.com/pineapple-cat), 
 [Yagmur Ozdemir](https://github.com/yidilozdemir), 
 [Marlon Wijeyasinghe](https://github.com/mwij02), 
@@ -41,10 +44,9 @@ You can express your interest by commenting on this discussion [ticket](https://
 
 ## :computer: Pre-requisites 
 * [ ] GitHub username (or [sign up](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account) for a GitHub account if you don’t have one).
-* [ ] Participants must bring their own computers running Linux, macOS or Windows, with either a CPU or GPU. Machines with GPUs are preferred for model prototyping. The minimum laptop requirements are: 8 CPU cores, 16 GB RAM, 30 GB of free disk space
-* [ ] (Optional) Docker installed and configured with the following allocated resources: 8 CPU cores and 16 GB memory.
-* [ ] (To discuss) Set up minimal ROS2 VM, test on ARC infrastucture ([dockerfile](https://github.com/mxochicale/nvidia-open-source-robot-lab/blob/main/Dockerfile))
-* [ ] (To discuss) Test [zenoh bridge](https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds), VPNs for connectivity between local networks
+* [ ] Participants must bring their own computers running Linux, macOS or Windows, with either a CPU or GPU. Machines with GPUs are preferred for local AI model prototyping. The minimum laptop requirements are: 8 CPU cores, 16 GB RAM, 30 GB of free disk space
+
+See further pre-requisites details[here](docs/agenda/day01.md).
 
 ## :date: Agenda
 The following agenda is a general guide and may be subject to slight changes. 
@@ -52,11 +54,11 @@ In essence, a best practice is to document progress as we hack.
 
 | Time  | Activity  | 
 | --- |--- |
-| 08:30 - 09:00 | Arrival and networking | 
-| 09:00 – 09:15 | Welcome message | 
-| 09:15 – 10:30 | Introduction (document as you hack) [:link:](docs/agenda/day01.md) |
-| 10:30 - 10:45 | Coffee break | 
-| 10:45 - 12:30 | Hacking:  [:link:](docs/agenda/day01.md) |
+| 09:30 - 10:00 | Arrival and networking | 
+| 10:00 – 10:10 | Welcome message | 
+| 10:10 – 11:00 | Introduction (document as you hack) [:link:](docs/agenda/day01.md) |
+| 11:00 - 11:15 | Coffee break | 
+| 11:15 - 12:30 | Hacking:  [:link:](docs/agenda/day01.md) |
 | 12:30 - 13:30 | Lunch break | 
 | 13:30 - 15:00 | Hacking: [:link:](docs/agenda/day01.md) |
 | 15:00 - 15:15 | Coffee break | 
@@ -68,8 +70,6 @@ In essence, a best practice is to document progress as we hack.
 We are using [Discussions](https://github.com/UCL-CyberPhysicalSystems/hackathon-01/discussions) to explore activities, skills, demo requirements, and brainstorm ideas. 
 It is a space to engage with other community members and welcome newcomers!
 
-
 ## :recycle: Contribution guidelines and code of conduct
-* For full details on how to contribute to the project – including repository cloning and issue/branch/pull request workflows – please see the [CONTRIBUTING](https://github.com/UCL-CyberPhysicalSystems/hackathon-01/blob/main/CONTRIBUTING.md) guidelines.
+* For full details on how to contribute to the project, including repository cloning and issue/branch/pull request workflows. Please see the [CONTRIBUTING](https://github.com/UCL-CyberPhysicalSystems/hackathon-01/blob/main/CONTRIBUTING.md) guidelines.
 * For information on our community standards, responsibilities and enforcement policies, refer to the [CODE OF CONDUCT](https://github.com/UCL-CyberPhysicalSystems/hackathon-01/blob/main/CODE_OF_CONDUCT.md).
-
