@@ -43,14 +43,17 @@ Registration is free.
 You can express your interest by commenting on this discussion [ticket](https://github.com/UCL-CyberPhysicalSystems/hackathon-01/discussions/categories/express-of-interest) with your GitHub username, your availability, the skills you have, and the ones you’d like to learn.
 
 ## :computer: Pre-requisites 
-* [ ] GitHub username (or [sign up](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account) for a GitHub account if you don’t have one).
-* [ ] Participants must bring their own computers running Linux, macOS or Windows, with either a CPU or GPU. Machines with GPUs are preferred for local AI model prototyping. The minimum laptop requirements are: 8 CPU cores, 16 GB RAM, 30 GB of free disk space
+See the basic prerequisites below. For further details, please see [here](docs/agenda/day01.md).
 
-See further pre-requisites details[here](docs/agenda/day01.md).
+* GitHub username (or [sign up](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account) for a GitHub account if you don’t have one).
+* Participants must bring their own computers running Linux, macOS or Windows, with either a CPU or GPU. Machines with GPUs are preferred for local AI model prototyping. The minimum laptop requirements are: 8 CPU cores, 16 GB RAM, 30 GB of free disk space
 
 ## :date: Agenda
 The following agenda is a general guide and may be subject to slight changes. 
-In essence, a best practice is to document progress as we hack.
+The main essence of the hackathon is to document progress as we hack.
+
+See detailed agenda [here](docs/agenda/day01.md).
+
 
 | Time  | Activity  | 
 | --- |--- |
