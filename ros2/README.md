@@ -2,17 +2,20 @@
 > The Robot Operating System (ROS) is a set of software libraries and tools for building robot applications. From drivers and state-of-the-art algorithms to powerful developer tools, ROS has the open source tools you need for your next robotics project.
 > REP 2000: https://ros.org/reps/rep-2000.html defines the timeline for future ROS 2 releases as well as the targeted platforms for each specific one. 
 
-## Install docker images
-* build
+## Build docker images with custom parameters
+Example of [build-docker.bash](build-docker.bash):
 ```bash
-bash build.bash #Profiles: ros2, ros2cuda, isaacsim, all
+PROFILE=ros2 #Profiles: ros2, ros2cuda, isaacsim, all
+ROS_DISTRO=humble
+VERSION_ID=0.0.1
+bash build-docker.bash $PROFILE $ROS_DISTRO $VERSION_ID
 ```
-* run
-```bash
-bash run-ros2.bash
-bash run-ros2cuda.bash
-bash run-ros2isaacsim.bash
-```
+
+## Run and test images
+Once you have built docker images, you can then run your image for [basic](basic), [cuda](cuda), [isaacsim](isaacsim).
+
+## Useful commands
+
 * docker commands: images, ps, stop, remove
 ```bash
 docker images && docker ps
@@ -22,7 +25,7 @@ docker stop $(docker ps -a -q)
 docker system prune -f --volumes
 ```
 
-## rosdep-init
+* rosdep-init
 ```bash
 ROS_DISTRO=humble
 rosdep fix-permissions
