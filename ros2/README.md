@@ -5,9 +5,9 @@
 ## Build docker images with custom parameters
 Example of [build-docker.bash](build-docker.bash):
 ```bash
-PROFILE=ros2 #Profiles: ros2, ros2cuda, isaacsim, all
-ROS_DISTRO=humble
-VERSION_ID=0.0.1
+#Profiles: ros2, ros2cuda, isaacsim, all
+PROFILE=ros2 && ROS_DISTRO=humble && VERSION_ID=0.1.0
+
 bash build-docker.bash $PROFILE $ROS_DISTRO $VERSION_ID
 ```
 
@@ -16,13 +16,13 @@ Once you have built docker images, you can then run your image for [basic](basic
 
 ## Useful commands
 
-* docker commands: images, ps, stop, remove
+* The following are a few useful commands, for more comprehensive list see this [cheatsheet](https://www.linuxteck.com/docker-management-command-cheat-sheet/)
 ```bash
-docker images && docker ps
-docker exec -it <container_id> bash
-docker exec -it $(docker container ls  | grep 'ros2:cuda' | awk '{print $1}') bash
-docker stop $(docker ps -a -q)
-docker system prune -f --volumes
+docker images && docker ps # that list images containers
+docker exec -it <container_id> # Exececute command inside the containers
+docker exec -it $(docker container ls  | grep '${IMAGENAME}' | awk '{print $1}') # use IMAGENAME variable to select container id for docker command execution
+docker rmi --force <ID> # remove docker images
+docker system prune -f --volumes # free up disk space
 ```
 
 * rosdep-init
