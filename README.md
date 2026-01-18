@@ -22,9 +22,9 @@ WHERE: UCL Here East (G40). 8-9 East Bay Lane, Queen Elizabeth Olympic Park, Lon
 ## :sparkles: Organisers, participants, and collaborators.
 
 * ARC: UCL Advanced Research Computing Centre:    
-[Mack Nixon]((https://github.com/), 
-[Mahmoud Abdelrazek](https://github.com/), 
-[Sunny Park](https://github.com/), 
+[Mack Nixon](https://github.com/TOADD), 
+[Mahmoud Abdelrazek](https://github.com/TOADD), 
+[Sunny Park](https://github.com/TOADD), 
 [Emily Dubrovska](https://github.com/pineapple-cat), 
 [Yagmur Ozdemir](https://github.com/yidilozdemir), 
 [Marlon Wijeyasinghe](https://github.com/mwij02), 
@@ -39,8 +39,8 @@ WHERE: UCL Here East (G40). 8-9 East Bay Lane, Queen Elizabeth Olympic Park, Lon
 [Chris Bendkowski](https://github.com/ctbend)
 
 ## :school: Express interest
-Registration is free. 
-You can express your interest by commenting on this discussion [ticket](https://github.com/UCL-CyberPhysicalSystems/hackathon-01/discussions/categories/express-of-interest) with your GitHub username, your availability, the skills you have, and the ones you’d like to learn.
+This event is open to UCL staff and students and is free to attend. 
+You can register your interest by commenting on this discussion [ticket](https://github.com/UCL-CyberPhysicalSystems/hackathon-01/discussions/categories/express-of-interest) with your GitHub username, your availability, the skills you have, and the skills you’d like to learn.
 
 ## :computer: Pre-requisites 
 See the basic prerequisites below. For further details, please see [here](docs/agenda/day01.md).
@@ -51,22 +51,20 @@ See the basic prerequisites below. For further details, please see [here](docs/a
 ## :date: Agenda
 The following agenda is a general guide and may be subject to slight changes. 
 The main essence of the hackathon is to document progress as we hack.
-
 See detailed agenda [here](docs/agenda/day01.md).
-
 
 | Time  | Activity  | 
 | --- |--- |
 | 09:30 - 10:00 | Arrival and networking | 
 | 10:00 – 10:10 | Welcome message | 
-| 10:10 – 11:00 | Introduction (document as you hack) [:link:](docs/agenda/day01.md) |
+| 10:10 – 11:00 | Introduction (document as you hack) |
 | 11:00 - 11:15 | Coffee break | 
-| 11:15 - 12:30 | Hacking:  [:link:](docs/agenda/day01.md) |
+| 11:15 - 12:30 | Hacking  |
 | 12:30 - 13:30 | Lunch break | 
-| 13:30 - 15:00 | Hacking: [:link:](docs/agenda/day01.md) |
+| 13:30 - 15:00 | Hacking  |
 | 15:00 - 15:15 | Coffee break | 
-| 15:15 - 17:00 | Hacking:  [:link:](docs/agenda/day01.md)  | 
-| 16:45 - 17:00 | Clonclusions and call for action! |
+| 15:15 - 17:00 | Hacking  | 
+| 17:00 - 17:30 | Retrospective, new projects and plans for next event |
 | 17:30 onwards | Social |
 
 ## :family: Forum
