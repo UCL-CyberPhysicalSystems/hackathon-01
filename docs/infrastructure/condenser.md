@@ -19,9 +19,9 @@ Host condenser
 
 ## Available VMs
 ```bash
-IP0=00.000.00.0
-IP1=00.000.00.0
-IP2=00.000.00.0
+IP0=00.000.00.2
+IP1=00.000.00.3
+IP2=00.000.00.4
 ssh -J condenser ubuntu@${IP0} # for cyber-physical-lab-0 
 ssh -J condenser ubuntu@${IP1} # for cyber-physical-lab-1
 ssh -J condenser ubuntu@${IP2} # for cyber-physical-lab-2
