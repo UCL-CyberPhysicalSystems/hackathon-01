@@ -3,16 +3,14 @@
 > REP 2000: https://ros.org/reps/rep-2000.html defines the timeline for future ROS 2 releases as well as the targeted platforms for each specific one. 
 
 ## Build docker images with custom parameters
-Example of [build-docker.bash](build-docker.bash):
+Example of [build-docker.bash](build-docker.bash) where Profiles could be: ros2, network, ros2cuda, isaacsim, all.
 ```bash
-#Profiles: ros2, ros2cuda, isaacsim, all
-PROFILE=ros2 && ROS_DISTRO=humble && VERSION_ID=0.1.0
-
+PROFILE=ros2 && ROS_DISTRO=humble && VERSION_ID=0.0.1
 bash build-docker.bash $PROFILE $ROS_DISTRO $VERSION_ID
 ```
 
 ## Run and test images
-Once you have built docker images, you can then run your image for [basic](basic), [unified-ai](unified-ai), [cuda](cuda), [isaacsim](isaacsim).
+Once you have built docker images, you can then run your image for [basic](basic), [network](network), [unified-ai](unified-ai), [cuda](cuda), [isaacsim](isaacsim).
 
 ## Useful commands
 
