@@ -49,6 +49,7 @@ RUN set -eux && \
         lsb-release \
         software-properties-common \
         wget \
+        unzip \
         dirmngr \
         # Add gpg for key management
         gpg \
@@ -176,6 +177,7 @@ RUN set -eux && \
         ros-${ROS_DISTRO}-ros-core \
         ros-${ROS_DISTRO}-turtlesim \
         ros-${ROS_DISTRO}-xacro \
+        ros-${ROS_DISTRO}-rmw-cyclonedds-cpp \
         # RQT core tools
         ros-${ROS_DISTRO}-rqt \
         ros-${ROS_DISTRO}-rqt-common-plugins \
@@ -280,6 +282,8 @@ RUN set -eux && \
         colcon-cmake \
         colcon-core \
         # Zenoh Python bindings
+        eclipse-zenoh==1.5.0 \
+        pycdr2 \
         zenoh && \
     # Initialize rosdep
     rosdep init 2>/dev/null || true && \
