@@ -12,7 +12,7 @@ bash build-docker.bash $PROFILE $ROS_DISTRO $VERSION_ID
 ```
 
 ## Run and test images
-Once you have built docker images, you can then run your image for [basic](basic), [cuda](cuda), [isaacsim](isaacsim).
+Once you have built docker images, you can then run your image for [basic](basic), [unified-ai](unified-ai), [cuda](cuda), [isaacsim](isaacsim).
 
 ## Useful commands
 
