@@ -2,7 +2,7 @@
 > "DDS works best within a local network (LAN), but it struggles when communication needs to cross WAN, NAT, or firewalls. Zenoh, on the other hand, is lightweight and efficient, designed to scale from embedded devices up to cloud systems. Its optimized routing reduces the bandwidth overhead caused by DDS discovery floods, making remote ROS 2 communication both feasible and resource-friendly, even in large or bandwidth-constrained networks."
 https://medium.com/@piliwilliam0306/use-zenoh-bridge-ros2dds-with-ros2-humble-459ab70ce9c7
 
-## Run ROS2 with pre-installed dependnecies
+## Run ROS2 with pre-installed dependencies
 ```bash
 cd ros/network
 PROFILE=network && ROS_DISTRO=humble && VERSION_ID=0.0.1
