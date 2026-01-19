@@ -15,14 +15,8 @@ CONTAINER_NAME="ros2-${ROS_DISTRO}"
 
 
 # Enable X11 forwarding
-xhost +
-#xhost +local:docker > /dev/null 2>&1
-
-#docker run --name ros2 --entrypoint bash -it --runtime=nvidia --gpus all -e "ACCEPT_EULA=Y" --rm --network=host \
-#    -e "PRIVACY_CONSENT=Y" \
-#    -v $HOME/.Xauthority:/root/.Xauthority:rw \
-#    -e DISPLAY \
-#    ros:two
+#xhost +
+xhost +local:docker > /dev/null 2>&1
 
 # Run container
 docker run \
