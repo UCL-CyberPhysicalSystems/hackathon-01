@@ -2,27 +2,28 @@
 > The Robot Operating System (ROS) is a set of software libraries and tools for building robot applications. From drivers and state-of-the-art algorithms to powerful developer tools, ROS has the open source tools you need for your next robotics project.
 > REP 2000: https://ros.org/reps/rep-2000.html defines the timeline for future ROS 2 releases as well as the targeted platforms for each specific one. 
 
-## Install docker images
-* build
+## Build docker images with custom parameters
+Example of [build-docker.bash](build-docker.bash) where Profiles could be: ros2, network, ros2cuda, isaacsim, all.
 ```bash
-bash build.bash #Profiles: ros2, ros2cuda, isaacsim, all
-```
-* run
-```bash
-bash run-ros2.bash
-bash run-ros2cuda.bash
-bash run-ros2isaacsim.bash
-```
-* docker commands: images, ps, stop, remove
-```bash
-docker images && docker ps
-docker exec -it <container_id> bash
-docker exec -it $(docker container ls  | grep 'ros2:cuda' | awk '{print $1}') bash
-docker stop $(docker ps -a -q)
-docker system prune -f --volumes
+PROFILE=ros2 && ROS_DISTRO=humble && VERSION_ID=0.0.1
+bash build-docker.bash $PROFILE $ROS_DISTRO $VERSION_ID
 ```
 
-## rosdep-init
+## Run and test images
+Once you have built docker images, you can then run your image for [basic](basic), [network](network), [unified-ai](unified-ai), [cuda](cuda), [isaacsim](isaacsim).
+
+## Useful commands
+
+* The following are a few useful commands, for more comprehensive list see this [cheatsheet](https://www.linuxteck.com/docker-management-command-cheat-sheet/)
+```bash
+docker images && docker ps # that list images containers
+docker exec -it <container_id> # Exececute command inside the containers
+docker exec -it $(docker container ls  | grep '${IMAGENAME}' | awk '{print $1}') # use IMAGENAME variable to select container id for docker command execution
+docker rmi --force <ID> # remove docker images
+docker system prune -f --volumes # free up disk space
+```
+
+* rosdep-init
 ```bash
 ROS_DISTRO=humble
 rosdep fix-permissions
