@@ -8,6 +8,26 @@ PROFILE=network && ROS_DISTRO=humble && VERSION_ID=0.0.1
 bash build-docker.bash $PROFILE $ROS_DISTRO $VERSION_ID
 ```
 
+## Pushing container images
+```bash
+PROJECT_NAME=ros2condenser
+GITHUB_USERNAME=YOUR_ID
+VERSION_ID=0.0.1
+export CR_PAT=YOUR_TOKEN
+echo ${CR_PAT} | docker login ghcr.io -u ${GITHUB_USERNAME} --password-stdin
+```
+
+Tag your Docker image using the image ID and your desired image name and hosting destination.
+```bash
+docker tag ros2:${PROFILE}-${ROS_DISTRO}-${VERSION_ID} ghcr.io/mxochicale/${PROJECT_NAME}:${VERSION_ID}
+```
+Pushing container images
+```bash
+docker push ghcr.io/mxochicale/${PROJECT_NAME}:${VERSION_ID}
+```
+Go to packages https://github.com/users/mxochicale/packages/container/package/ros2condenser and change visibility to public.
+
+
 ## Run and test docker images
 ```bash
 cd ros2/network
