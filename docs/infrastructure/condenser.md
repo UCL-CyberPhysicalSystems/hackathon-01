@@ -4,9 +4,9 @@
 
 1. Connect to UCL VPN (see [here](https://www.ucl.ac.uk/isd/services/get-connected/ucl-virtual-private-network-vpn) for details)
 
-2. Upload (or generate) an SSH key > https://ssh.condenser.arc.ucl.ac.uk/ssh-keys
+2. Upload (or generate) an SSH key > https://ssh.condenser.arc.ucl.ac.uk/ssh-keys (`id_condenser` and `id_condenser.pub`)
 
-3. Generate SSH Certificates > https://ssh.condenser.arc.ucl.ac.uk/ssh-certificates
+3. Generate SSH Certificates > https://ssh.condenser.arc.ucl.ac.uk/ssh-certificates (e.g., `id_condenser.signed`)
 
 4. Create `~/.ssh/config`
 ```bash
@@ -18,6 +18,10 @@ Host condenser
 ```
 
 ## Available VMs
+To connect to the VMs, you need to define the required details as local environment variables in your shell. 
+
+:warning: It is important to note that IP addresses must not be shared publicly, as this can introduce security risks such as targeted attacks, denial-of-service (DoS/DDoS) attacks, geolocation tracking, network mapping, brute-force attacks, and identification or social engineering.
+
 ```bash
 IP0=00.000.00.2
 IP1=00.000.00.3
@@ -46,6 +50,23 @@ docker run -it --rm   --net=host   --privileged   -v $(pwd):/workspace   $IMAGE
 #usage: ros2 [-h] [--use-python-default-buffering] Call `ros2 <command> -h` for more detailed usage. ...
 #ros2 is an extensible command-line tool for ROS 2.
 # ...
+```
+
+
+## Known issue: `cloud-user@ssh.condenser.arc.ucl.ac.uk: Permission denied (publickey,gssapi-keyex,gssapi-with-mic)`
+
+SSH certificates are valid for 7 days. Once a certificate expires, you will need to generate a new one by visiting:
+https://ssh.condenser.arc.ucl.ac.uk/ssh-certificates (remember to be connected to the UCL VPN).
+
+After downloading the certificate file (`id_condenser.signed`), place it in your home SSH directory (on macOS/Linux: `~/.ssh/`) and set the correct permissions:
+
+```bash
+chmod 600 ~/.ssh/id_condenser.signed
+```
+
+Example certificate file (`id_condenser.signed`)
+```bash
+ssh-ed25519-cert-v01@openssh.com <KEY>
 ```
 
 ## Deploying with Terraform
