@@ -70,3 +70,31 @@ Once installed, in a terminal, simple run `zenoh-bridge-ros2dds` and this will s
 Once running, start the ros2 data streams you wish to send through 
 
 On the Unified-AI side, spin up your container as above, and follow the previous instructions. 
+
+## Testing Connectivity 
+
+First start up the zenoh bridge as above. There should be a set of stdout confirming a connection if successful. 
+
+Then, on the G40 side, start some publishers. For this example we are just creating our own, but this could be other data too. Start a second terminal, source ros2 and run the following:
+
+```bash
+ros2 topic pub ros2 topic pub /hello std_msgs/msg/String {"data: hello"} 10.0
+```
+
+Then on the Unified-AI side VM, start a new terminal and exec into the running container e.g.
+
+```bash
+docker exec -it zenoh_test bash
+```
+
+> **Note**: Container has tmux installed if easier to use. Can run zenoh bridge and any additional commands as tmux panes/windows. 
+
+And then see if you are getting ros data
+```bash
+ros2 topic list
+ros2 topic echo /hello
+ros2 topic hz /hello
+```
+You should see the topics you published on the G40 side, the contents and the message frequency should match as well. 
+
+
