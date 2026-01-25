@@ -26,6 +26,8 @@ docker run \
     --env "PRIVACY_CONSENT=Y" \
     --rm \
     --network=host \
+    --device=/dev/video0:/dev/video0 \
+    --group-add video \
     --env "DISPLAY=$DISPLAY" \
     --env "QT_X11_NO_MITSHM=1" \
     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
