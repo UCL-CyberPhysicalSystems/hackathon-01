@@ -15,6 +15,8 @@ Host condenser
   User cloud-user
   CertificateFile ~/.ssh/id_condenser.signed
   IdentityFile ~/.ssh/id_condenser
+  ForwardX11 yes
+  ForwardX11Trusted yes
 ```
 
 ## Available VMs
@@ -28,7 +30,8 @@ IP1=00.000.00.3
 IP2=00.000.00.4
 ssh -J condenser ubuntu@${IP0} # for cyber-physical-lab-0 
 ssh -J condenser ubuntu@${IP1} # for cyber-physical-lab-1
-ssh -vvv -X -J condenser ubuntu@${IP2} # for cyber-physical-lab-2 that use SSH X11 forwarding
+ssh -vvv -Y -J condenser ubuntu@${IP2} # for cyber-physical-lab-2 with -Y enables trusted X11 forwarding
+ssh -vvv -X -J condenser ubuntu@${IP2} # for cyber-physical-lab-2 with -X enables untrusted X11 forwarding
 ```
 
 ## Pull image
@@ -58,15 +61,28 @@ docker run -it --rm --net=host --privileged -e DISPLAY=$DISPLAY -v /tmp/.X11-uni
 ## Known issues and potential solutions 
 
 ### `rqt: could not connect to display`
-* install x11 utils and restart VM to make effect
+* Check your current DISPLAY variable
 ```
+echo $DISPLAY
+#localhost:10.0
+```
+
+* Create the .Xauthority file if it doesn't exist
+```bash
+touch ~/.Xauthority
+chmod 600 ~/.Xauthority
+xauth list
+```
+
+* install x11 utils and restart VM to make effect
+```bash
 sudo apt install x11-xserver-utils 
 #xhost +local:root  # Allow local connections (temporary security relaxation)
 #xhost -local:root  # Restrict access when done
+```
 
-```
 * Check display manager
-```
+```bash
 echo $XDG_SESSION_TYPE  # Should be 'x11' or 'wayland'
 tty
 ```

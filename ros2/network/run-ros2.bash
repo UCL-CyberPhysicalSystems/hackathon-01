@@ -50,7 +50,7 @@ docker run \
     --env "ACCEPT_EULA=Y" \
     --env "PRIVACY_CONSENT=Y" \
     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
-    -v "$HOME/.Xauthority:/root/.Xauthority:rw" \
+    -v "$HOME/.Xauthority:/home/rosuser/.Xauthority:rw" \
     -v "$HOME/repositories/UCL-CyberPhysicalSystems/hackathon-01:/home/rosuser/hackathon-01" \
     "${IMAGE}"
 
