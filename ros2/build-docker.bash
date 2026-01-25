@@ -141,7 +141,7 @@ build_image() {
         --file "$dockerfile_path" \
         --build-arg ROS_DISTRO="$ros_distro" \
         --build-arg VERSION_ID="$version_id" \
-        --progress=plain \
+        --progress=auto \
         .; then
         print_success "Successfully built $image_tag"
     else

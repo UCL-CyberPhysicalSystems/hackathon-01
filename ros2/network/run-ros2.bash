@@ -13,9 +13,8 @@ VERSION_ID="${3:-0.0.1}"
 IMAGE_TAG="ros2:network-${ROS_DISTRO}-${VERSION_ID}"
 CONTAINER_NAME="ros2-${ROS_DISTRO}"
 
-
-# Enable X11 forwarding
-#xhost +
+# Allow Docker to connect to X server and Enable X11 forwarding
+# xhost +local:docker
 xhost +local:docker > /dev/null 2>&1
 
 # Run container
@@ -23,11 +22,12 @@ docker run \
     --name "${CONTAINER_NAME}" \
     --entrypoint bash \
     -it \
-    -e "ACCEPT_EULA=Y" \
-    -e "PRIVACY_CONSENT=Y" \
+    --env "ACCEPT_EULA=Y" \
+    --env "PRIVACY_CONSENT=Y" \
     --rm \
     --network=host \
-    -e "DISPLAY=$DISPLAY" \
+    --env "DISPLAY=$DISPLAY" \
+    --env "QT_X11_NO_MITSHM=1" \
     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
     -v "$HOME/.Xauthority:/root/.Xauthority:rw" \
     -v "$PWD:/workspace" \

@@ -44,7 +44,7 @@ docker images
 #REPOSITORY                         TAG       IMAGE ID       CREATED       SIZE
 #ghcr.io/mxochicale/ros2condenser   0.0.1     4594077c8331   2 hours ago   6.4GB
 
-docker run -it --rm   --net=host   --privileged   -v $(pwd):/workspace   $IMAGE  
+docker run -it --rm --net=host --privileged -v $(pwd):/workspace $IMAGE  
 
 #[rosuser@cyber-physical-lab-2:~][humble][Rust]$ ros2
 #usage: ros2 [-h] [--use-python-default-buffering] Call `ros2 <command> -h` for more detailed usage. ...
