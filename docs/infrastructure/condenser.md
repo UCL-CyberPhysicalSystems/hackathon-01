@@ -37,14 +37,15 @@ ssh -J condenser ubuntu@${IP2} # for cyber-physical-lab-2
 sudo apt install docker.io
 sudo usermod -aG docker $USER # Log out and log back in for changes to take effect
 #setup image, pull and run it
-IMAGE="ghcr.io/mxochicale/ros2condenser:0.0.1"
+IMAGE="ghcr.io/mxochicale/ros2condenser:0.0.2"
 docker pull $IMAGE
 
 docker images
 #REPOSITORY                         TAG       IMAGE ID       CREATED       SIZE
 #ghcr.io/mxochicale/ros2condenser   0.0.1     4594077c8331   2 hours ago   6.4GB
 
-docker run -it --rm --net=host --privileged -v $(pwd):/workspace $IMAGE  
+[ -z "$DISPLAY" ] && export DISPLAY=:0 # Set DISPLAY if not set
+docker run -it --rm --net=host --privileged -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v $(pwd):/workspace $IMAGE  
 
 #[rosuser@cyber-physical-lab-2:~][humble][Rust]$ ros2
 #usage: ros2 [-h] [--use-python-default-buffering] Call `ros2 <command> -h` for more detailed usage. ...
@@ -53,7 +54,24 @@ docker run -it --rm --net=host --privileged -v $(pwd):/workspace $IMAGE
 ```
 
 
-## Known issue: `cloud-user@ssh.condenser.arc.ucl.ac.uk: Permission denied (publickey,gssapi-keyex,gssapi-with-mic)`
+## Known issues and potential solutions 
+
+### `rqt: could not connect to display`
+* install x11 utils and restart VM to make effect
+```
+sudo apt install x11-xserver-utils 
+#xhost +local:root  # Allow local connections (temporary security relaxation)
+#xhost -local:root  # Restrict access when done
+sudo apt install xvfb
+
+```
+* Check display manager
+```
+echo $XDG_SESSION_TYPE  # Should be 'x11' or 'wayland'
+tty
+```
+
+### `cloud-user@ssh.condenser.arc.ucl.ac.uk: Permission denied (publickey,gssapi-keyex,gssapi-with-mic)`
 
 SSH certificates are valid for 7 days. Once a certificate expires, you will need to generate a new one by visiting:
 https://ssh.condenser.arc.ucl.ac.uk/ssh-certificates (remember to be connected to the UCL VPN).
@@ -68,6 +86,8 @@ Example certificate file (`id_condenser.signed`)
 ```bash
 ssh-ed25519-cert-v01@openssh.com <KEY>
 ```
+
+
 
 ## Deploying with Terraform
 In the case you want to destroy and create a new VM, it is recommended to see https://condenser.arc.ucl.ac.uk/documentation/deploying_resources/deploying_terraform/
