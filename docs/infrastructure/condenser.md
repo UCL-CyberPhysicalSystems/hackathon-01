@@ -28,7 +28,7 @@ IP1=00.000.00.3
 IP2=00.000.00.4
 ssh -J condenser ubuntu@${IP0} # for cyber-physical-lab-0 
 ssh -J condenser ubuntu@${IP1} # for cyber-physical-lab-1
-ssh -J condenser ubuntu@${IP2} # for cyber-physical-lab-2
+ssh -X -J condenser ubuntu@${IP2} # for cyber-physical-lab-2 that use SSH X11 forwarding
 ```
 
 ## Pull image
@@ -42,9 +42,10 @@ docker pull $IMAGE
 
 docker images
 #REPOSITORY                         TAG       IMAGE ID       CREATED       SIZE
+#ghcr.io/mxochicale/ros2condenser   0.0.2     c0caac488d30   2 hours ago   4.6GB
 #ghcr.io/mxochicale/ros2condenser   0.0.1     4594077c8331   2 hours ago   6.4GB
 
-[ -z "$DISPLAY" ] && export DISPLAY=:0 # Set DISPLAY if not set
+# echo $DISPLAY; localhost:10.0
 docker run -it --rm --net=host --privileged -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v $(pwd):/workspace $IMAGE  
 
 #[rosuser@cyber-physical-lab-2:~][humble][Rust]$ ros2
