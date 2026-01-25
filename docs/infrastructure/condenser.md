@@ -28,7 +28,7 @@ IP1=00.000.00.3
 IP2=00.000.00.4
 ssh -J condenser ubuntu@${IP0} # for cyber-physical-lab-0 
 ssh -J condenser ubuntu@${IP1} # for cyber-physical-lab-1
-ssh -X -J condenser ubuntu@${IP2} # for cyber-physical-lab-2 that use SSH X11 forwarding
+ssh -vvv -X -J condenser ubuntu@${IP2} # for cyber-physical-lab-2 that use SSH X11 forwarding
 ```
 
 ## Pull image
@@ -63,7 +63,6 @@ docker run -it --rm --net=host --privileged -e DISPLAY=$DISPLAY -v /tmp/.X11-uni
 sudo apt install x11-xserver-utils 
 #xhost +local:root  # Allow local connections (temporary security relaxation)
 #xhost -local:root  # Restrict access when done
-sudo apt install xvfb
 
 ```
 * Check display manager

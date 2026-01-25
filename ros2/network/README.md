@@ -37,11 +37,13 @@ Go to packages https://github.com/users/mxochicale/packages/container/package/ro
 
 ## Pull and test image registry 
 * Connect to UCL VPN (see [here](https://www.ucl.ac.uk/isd/services/get-connected/ucl-virtual-private-network-vpn) for details)
-```
+```bash
 #setup image, pull and run it
-GITHUB_USERNAME=YOUR_GITHUB_USERNAME && PROJECT_NAME=ros2condenser && VERSION_ID=0.0.2
-IMAGE="ghcr.io/mxochicale/${PROJECT_NAME}:${VERSION_ID}"
+GITHUB_USERNAME=mxochicale && PROJECT_NAME=ros2condenser && VERSION_ID=0.0.2
+IMAGE="ghcr.io/${GITHUB_USERNAME}/${PROJECT_NAME}:${VERSION_ID}"
 docker pull $IMAGE
 docker images
-docker run -it --rm --net=host --privileged -v $(pwd):/workspace $IMAGE
+GITHUB_USERNAME=mxochicale PROJECT_NAME=ros2condenser VERSION_ID=0.0.2 bash run-ros2.bash
+#to run multiple terminals with the same docker images id
+docker exec -it $(docker container ls  | grep "${PROJECT_NAME}:${VERSION_ID}" | awk '{print $1}') bash
 ```
