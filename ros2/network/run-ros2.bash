@@ -36,13 +36,12 @@ xhost +local:docker > /dev/null 2>&1
 
 # Run container - combining both your and original parameters
 docker run \
-    --name "${CONTAINER_NAME}" \
+    --name "${CONTAINER_NAME}"\
     --entrypoint bash \
     -it \
     --rm \
     --net=host \
     --privileged \
-    -v "$(pwd):/workspace" \
     --device=/dev/video0:/dev/video0 \
     --group-add video \
     --env "DISPLAY=$DISPLAY" \
@@ -51,6 +50,7 @@ docker run \
     --env "PRIVACY_CONSENT=Y" \
     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
     -v "$HOME/.Xauthority:/home/rosuser/.Xauthority:rw" \
+    -v "$(pwd):/workspace" \
     -v "$HOME/repositories/UCL-CyberPhysicalSystems/hackathon-01:/home/rosuser/hackathon-01" \
     "${IMAGE}"
 

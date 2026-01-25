@@ -135,13 +135,13 @@ build_image() {
     print_info "  Image tag: $image_tag"
     print_info "  Dockerfile: $dockerfile_path"
     
-    # Build with progress output and cache
+    # Build with progress output (progress=plain) and cache
     if docker build \
         --tag "$image_tag" \
         --file "$dockerfile_path" \
         --build-arg ROS_DISTRO="$ros_distro" \
         --build-arg VERSION_ID="$version_id" \
-        --progress=auto \
+        --progress=plain \
         .; then
         print_success "Successfully built $image_tag"
     else

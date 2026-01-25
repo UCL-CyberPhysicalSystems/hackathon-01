@@ -40,16 +40,16 @@ ssh -vvv -X -J condenser ubuntu@${IP2} # for cyber-physical-lab-2 with -X enable
 sudo apt install docker.io
 sudo usermod -aG docker $USER # Log out and log back in for changes to take effect
 #setup image, pull and run it
-IMAGE="ghcr.io/mxochicale/ros2condenser:0.0.2"
+IMAGE="ghcr.io/mxochicale/ros2condenser:0.0.3"
 docker pull $IMAGE
 
 docker images
 #REPOSITORY                         TAG       IMAGE ID       CREATED       SIZE
-#ghcr.io/mxochicale/ros2condenser   0.0.2     c0caac488d30   2 hours ago   4.6GB
-#ghcr.io/mxochicale/ros2condenser   0.0.1     4594077c8331   2 hours ago   6.4GB
+ghcr.io/mxochicale/ros2condenser:0.0.3        <ID>           7.04GB         1.59GB        
 
 # echo $DISPLAY; localhost:10.0
-docker run -it --rm --net=host --privileged -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v $(pwd):/workspace $IMAGE  
+cd /home/ubuntu/repositories/UCL-CyberPhysicalSystems/hackathon-01/ros2/network
+GITHUB_USERNAME=mxochicale PROJECT_NAME=ros2condenser VERSION_ID=0.0.3 bash run-ros2.bash
 
 #[rosuser@cyber-physical-lab-2:~][humble][Rust]$ ros2
 #usage: ros2 [-h] [--use-python-default-buffering] Call `ros2 <command> -h` for more detailed usage. ...
@@ -67,11 +67,11 @@ echo $DISPLAY
 #localhost:10.0
 ```
 
-* Create the .Xauthority file if it doesn't exist
+* Check or Create the .Xauthority file if it doesn't exist
 ```bash
-touch ~/.Xauthority
-chmod 600 ~/.Xauthority
 xauth list
+#touch ~/.Xauthority
+#chmod 600 ~/.Xauthority
 ```
 
 * install x11 utils and restart VM to make effect
@@ -83,7 +83,7 @@ sudo apt install x11-xserver-utils
 
 * Check display manager
 ```bash
-echo $XDG_SESSION_TYPE  # Should be 'x11' or 'wayland'
+echo $XDG_SESSION_TYPE  # Should be 'x11' or 'wayland' but got tty in VM and empty string inside docker image registry
 tty
 ```
 

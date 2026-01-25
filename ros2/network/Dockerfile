@@ -259,9 +259,12 @@ RUN set -eux && \
 
 # Install additional Python packages
 RUN set -eux && \
-    pip3 install --no-cache-dir --upgrade \
-        pip \
-        setuptools \
+    # First upgrade pip only (not other packages)
+    pip3 install --no-cache-dir --upgrade pip && \
+    # Install Python packages with specific versions to avoid conflicts
+    pip3 install --no-cache-dir \
+        # Setuptools version compatible with ROS Humble
+        "setuptools<80" \
         wheel && \
     pip3 install --no-cache-dir \
         argcomplete \
@@ -277,11 +280,14 @@ RUN set -eux && \
         pytest-repeat \
         pytest-xdist \
         # Utilities
+        "opencv-python>=4.8.0" \
+        "opencv-python-headless>=4.8.0" \
         ipython \
         numpy \
         pandas \
         matplotlib \
         seaborn \
+        imutils \
         # ROS tools
         rosdep \
         rosinstall_generator \
@@ -291,12 +297,15 @@ RUN set -eux && \
         colcon-cmake \
         colcon-core \
         # Zenoh Python bindings
-        eclipse-zenoh==1.5.0 \
-        pycdr2 \
-        zenoh && \
+        eclipse-zenoh \
+        pycdr2 && \
     # Initialize rosdep
     rosdep init 2>/dev/null || true && \
-    rm -rf /root/.cache/pip
+    # Clean cache
+    python3 -m pip cache purge && \
+    rm -rf /root/.cache/pip \
+    /tmp/* \
+    /var/tmp/*
 
 # Create a non-root user with proper UID/GID handling
 ARG USERNAME=rosuser

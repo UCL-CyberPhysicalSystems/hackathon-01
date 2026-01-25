@@ -1,14 +1,10 @@
 # zcam-python -- Streaming video with zenoh-python
 https://github.com/eclipse-zenoh/zenoh-demos/tree/main/computer-vision/zcam/zcam-python
 
-## Dependencies
-```
-pip3 install eclipse-zenoh opencv-python numpy imutils
-```
-
 ## Running zcam-python
 * Terminal 1
 ```
+cd /home/rosuser/hackathon-01/ros2/examples/zenoh-demos/computer-vision/zcam
 python3 zcapture.py -k 'demo/zcam/yourname'
 ```
 * Terminal 2
