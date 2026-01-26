@@ -11,10 +11,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
     ROS_DISTRO=humble \
     ROS_VERSION=2 \
     ROS_PYTHON_VERSION=3 \
-    SHELL=/bin/bash \
-    CARGO_HOME=/opt/cargo \
-    RUSTUP_HOME=/opt/rustup \
-    PATH="/opt/cargo/bin:${PATH}"
+    SHELL=/bin/bash
 
 # Set non-interactive for tzdata
 ENV DEBCONF_NOWARNINGS=yes
@@ -57,50 +54,80 @@ RUN set -eux && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Update and install essential C/C++ build tools and headers FIRST
+# Install X11 and Qt5 packages for GUI support
 RUN set -eux && \
     apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-        build-essential \
-        gcc \
-        g++ \
-        gdb \
-        clang \
-        clang-tools \
-        clang-format \
-        llvm \
-        llvm-dev \
-        libclang-dev \
-        clangd \
-        pkg-config \
-        libssl-dev \
-        libc6-dev \
-        libc++-dev \
-        libc++abi-dev \
-        # Additional development tools
-        ninja-build \
-        bear \
-        cmake-curses-gui \
-        cppcheck \
-        valgrind \
-        lldb && \
+    apt-get install -y --no-install-recommends \
+        # Core X11 server components
+        xserver-xorg-core \
+        xserver-xorg-input-evdev \
+        # Essential X11 utilities
+        x11-utils \
+        x11-xserver-utils \
+        xauth \
+        xinit \
+        # X11 VNC for remote display
+        x11vnc \
+        dbus-x11 \
+        # Core Qt5 development and runtime
+        qtbase5-dev \
+        qtchooser \
+        qt5-qmake \
+        qtbase5-dev-tools \
+        libqt5core5a \
+        libqt5gui5 \
+        libqt5widgets5 \
+        libqt5dbus5 \
+        libqt5network5 \
+        libqt5svg5 \
+        libqt5x11extras5 \
+        libqt5opengl5 \
+        # XCB libraries for Qt X11 support
+        libx11-xcb1 \
+        libxcb1 \
+        libxcb-randr0 \
+        libxcb-xfixes0 \
+        libxcb-xkb1 \
+        libxcb-keysyms1 \
+        libxcb-render-util0 \
+        libxcb-xinerama0 \
+        # Essential X11 development libraries
+        libx11-dev \
+        libxext-dev \
+        libxfixes-dev \
+        libxi-dev \
+        libxrandr-dev \
+        libxtst-dev \
+        libxv-dev \
+        # X11 runtime libraries
+        libglib2.0-0 \
+        libsm6 \
+        libxext6 \
+        libxrender1 \
+        libxi6 \
+        libxrandr2 \
+        libxfixes3 \
+        libxcursor1 \
+        libxinerama1 \
+        libxcomposite1 \
+        # Basic fonts for GUI
+        fonts-dejavu-core \
+        fonts-liberation \
+        fonts-noto \
+        fonts-noto-cjk \
+        # Audio support
+        libpulse0 \
+        libasound2 \
+        # Input support
+        libevdev2 && \
+    # Configure qtchooser to use qt5
+    update-alternatives --install /usr/bin/qmake qmake /usr/lib/x86_64-linux-gnu/qt5/bin/qmake 100 && \
+    update-alternatives --install /usr/bin/moc moc /usr/lib/x86_64-linux-gnu/qt5/bin/moc 100 && \
+    update-alternatives --install /usr/bin/uic uic /usr/lib/x86_64-linux-gnu/qt5/bin/uic 100 && \
+    update-alternatives --install /usr/bin/rcc rcc /usr/lib/x86_64-linux-gnu/qt5/bin/rcc 100 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Install Rust using rustup (non-interactive mode) - installed early to leverage cargo cache
-RUN set -eux && \
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable \
-        --default-host x86_64-unknown-linux-gnu \
-        --profile default \
-        --no-modify-path && \
-    . "${CARGO_HOME}/env" && \
-    rustup update stable && \
-    rustup component add rustfmt clippy rust-src rust-analyzer && \
-    rustup target add wasm32-unknown-unknown && \
-    # Install essential cargo tools (cargo-binstall removed due to version conflicts)
-    cargo install cargo-audit cargo-deny cargo-nextest && \
-    # Clean cargo cache
-    rm -rf "${CARGO_HOME}/registry/index/*" "${CARGO_HOME}/registry/cache/*" "${CARGO_HOME}/git/db/*"
 
 # Install bindgen dependencies and setup clang with specific version
 RUN set -eux && \
@@ -139,33 +166,14 @@ RUN set -eux && \
     # Add Gazebo repository
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/gazebo-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" > /etc/apt/sources.list.d/gazebo-stable.list
 
-# Clone and build zenoh-plugin-ros2dds with proper environment setup
-RUN set -eux && \
-    . "${CARGO_HOME}/env" && \
-    # Find libclang path for bindgen
-    export LIBCLANG_PATH=$(find /usr/lib -name "libclang*.so*" -type f | head -n1 | xargs dirname 2>/dev/null || echo "/usr/lib/llvm-14/lib") && \
-    # Clone repository
-    git clone --depth 1 --branch main https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds.git /tmp/zenoh-plugin-ros2dds && \
-    cd /tmp/zenoh-plugin-ros2dds && \
-    # Build with optimizations
-    CARGO_PROFILE_RELEASE_LTO=true \
-    CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1 \
-    cargo build --release --locked && \
-    # Install libraries
-    mkdir -p /opt/zenoh/plugins && \
-    find /tmp/zenoh-plugin-ros2dds/target/release -name "*.so" -exec cp {} /opt/zenoh/plugins/ \; && \
-    # Copy any static libraries if they exist
-    find /tmp/zenoh-plugin-ros2dds/target/release -name "*.a" -exec cp {} /opt/zenoh/plugins/ 2>/dev/null \; || true && \
-    # Set library path
-    echo "/opt/zenoh/plugins" > /etc/ld.so.conf.d/zenoh.conf && \
-    ldconfig && \
-    # Clean up
-    rm -rf /tmp/zenoh-plugin-ros2dds && \
-    # Create environment script
-    echo 'export ZENOH_PLUGIN_ROS2DDS_LIBRARY_PATH="/opt/zenoh/plugins"' > /etc/profile.d/zenoh.sh && \
-    echo 'export LD_LIBRARY_PATH="/opt/zenoh/plugins:${LD_LIBRARY_PATH}"' >> /etc/profile.d/zenoh.sh && \
-    echo 'export ZENOH_PLUGIN_SEARCH_DIRS="/opt/zenoh/plugins"' >> /etc/profile.d/zenoh.sh && \
-    chmod +x /etc/profile.d/zenoh.sh
+# Install zenoh-bridge-ros2dds
+RUN mkdir -p /etc/apt/keyrings \
+    && curl -L https://download.eclipse.org/zenoh/debian-repo/zenoh-public-key | gpg --dearmor --yes --output /etc/apt/keyrings/zenoh-public-key.gpg \
+    && echo "deb [signed-by=/etc/apt/keyrings/zenoh-public-key.gpg] https://download.eclipse.org/zenoh/debian-repo/ /" | tee -a /etc/apt/sources.list > /dev/null \
+    && apt-get update && apt-get install -y \
+        zenoh-bridge-ros2dds \
+    && rm -rf /var/lib/apt/lists/*
+
 
 # Install ROS2 desktop and development tools
 RUN set -eux && \
@@ -203,6 +211,7 @@ RUN set -eux && \
         vim \
         nano \
         htop \
+        tmux \
         # Graphics dependencies
         libgl1-mesa-glx \
         libglib2.0-0 \
@@ -250,9 +259,12 @@ RUN set -eux && \
 
 # Install additional Python packages
 RUN set -eux && \
-    pip3 install --no-cache-dir --upgrade \
-        pip \
-        setuptools \
+    # First upgrade pip only (not other packages)
+    pip3 install --no-cache-dir --upgrade pip && \
+    # Install Python packages with specific versions to avoid conflicts
+    pip3 install --no-cache-dir \
+        # Setuptools version compatible with ROS Humble
+        "setuptools<80" \
         wheel && \
     pip3 install --no-cache-dir \
         argcomplete \
@@ -268,11 +280,14 @@ RUN set -eux && \
         pytest-repeat \
         pytest-xdist \
         # Utilities
+        "opencv-python>=4.8.0" \
+        "opencv-python-headless>=4.8.0" \
         ipython \
         numpy \
         pandas \
         matplotlib \
         seaborn \
+        imutils \
         # ROS tools
         rosdep \
         rosinstall_generator \
@@ -282,12 +297,15 @@ RUN set -eux && \
         colcon-cmake \
         colcon-core \
         # Zenoh Python bindings
-        eclipse-zenoh==1.5.0 \
-        pycdr2 \
-        zenoh && \
+        eclipse-zenoh \
+        pycdr2 && \
     # Initialize rosdep
     rosdep init 2>/dev/null || true && \
-    rm -rf /root/.cache/pip
+    # Clean cache
+    python3 -m pip cache purge && \
+    rm -rf /root/.cache/pip \
+    /tmp/* \
+    /var/tmp/*
 
 # Create a non-root user with proper UID/GID handling
 ARG USERNAME=rosuser

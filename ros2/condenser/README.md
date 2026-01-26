@@ -28,7 +28,8 @@ IP1=00.000.00.3
 IP2=00.000.00.4
 ssh -J condenser ubuntu@${IP0} # for cyber-physical-lab-0 
 ssh -J condenser ubuntu@${IP1} # for cyber-physical-lab-1
-ssh -J condenser ubuntu@${IP2} # for cyber-physical-lab-2
+ssh -vvv -Y -J condenser ubuntu@${IP2} # for cyber-physical-lab-2 with -Y enables trusted X11 forwarding
+ssh -vvv -X -J condenser ubuntu@${IP2} # for cyber-physical-lab-2 with -X enables untrusted X11 forwarding
 ```
 
 ## Pull image
@@ -37,14 +38,16 @@ ssh -J condenser ubuntu@${IP2} # for cyber-physical-lab-2
 sudo apt install docker.io
 sudo usermod -aG docker $USER # Log out and log back in for changes to take effect
 #setup image, pull and run it
-IMAGE="ghcr.io/mxochicale/ros2condenser:0.0.1"
+IMAGE="ghcr.io/mxochicale/ros2condenser:0.0.3"
 docker pull $IMAGE
 
 docker images
 #REPOSITORY                         TAG       IMAGE ID       CREATED       SIZE
-#ghcr.io/mxochicale/ros2condenser   0.0.1     4594077c8331   2 hours ago   6.4GB
+ghcr.io/mxochicale/ros2condenser:0.0.3        <ID>           7.04GB         1.59GB        
 
-docker run -it --rm   --net=host   --privileged   -v $(pwd):/workspace   $IMAGE  
+# echo $DISPLAY; localhost:10.0
+cd /home/ubuntu/repositories/UCL-CyberPhysicalSystems/hackathon-01/ros2/network
+GITHUB_USERNAME=mxochicale PROJECT_NAME=ros2condenser VERSION_ID=0.0.3 bash run-ros2.bash
 
 #[rosuser@cyber-physical-lab-2:~][humble][Rust]$ ros2
 #usage: ros2 [-h] [--use-python-default-buffering] Call `ros2 <command> -h` for more detailed usage. ...
@@ -53,7 +56,36 @@ docker run -it --rm   --net=host   --privileged   -v $(pwd):/workspace   $IMAGE
 ```
 
 
-## Known issue: `cloud-user@ssh.condenser.arc.ucl.ac.uk: Permission denied (publickey,gssapi-keyex,gssapi-with-mic)`
+## Known issues and potential solutions 
+
+### `rqt: could not connect to display`
+* Check your current DISPLAY variable
+```
+echo $DISPLAY
+#localhost:10.0
+```
+
+* Check or Create the .Xauthority file if it doesn't exist
+```bash
+xauth list
+#touch ~/.Xauthority
+#chmod 600 ~/.Xauthority
+```
+
+* install x11 utils and restart VM to make effect
+```bash
+sudo apt install x11-xserver-utils 
+#xhost +local:root  # Allow local connections (temporary security relaxation)
+#xhost -local:root  # Restrict access when done
+```
+
+* Check display manager
+```bash
+echo $XDG_SESSION_TYPE  # Should be 'x11' or 'wayland' but got tty in VM and empty string inside docker image registry
+tty
+```
+
+### `cloud-user@ssh.condenser.arc.ucl.ac.uk: Permission denied (publickey,gssapi-keyex,gssapi-with-mic)`
 
 SSH certificates are valid for 7 days. Once a certificate expires, you will need to generate a new one by visiting:
 https://ssh.condenser.arc.ucl.ac.uk/ssh-certificates (remember to be connected to the UCL VPN).
@@ -68,6 +100,8 @@ Example certificate file (`id_condenser.signed`)
 ```bash
 ssh-ed25519-cert-v01@openssh.com <KEY>
 ```
+
+
 
 ## Deploying with Terraform
 In the case you want to destroy and create a new VM, it is recommended to see https://condenser.arc.ucl.ac.uk/documentation/deploying_resources/deploying_terraform/
