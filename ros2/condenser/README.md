@@ -15,8 +15,6 @@ Host condenser
   User cloud-user
   CertificateFile ~/.ssh/id_condenser.signed
   IdentityFile ~/.ssh/id_condenser
-  ForwardX11 yes
-  ForwardX11Trusted yes
 ```
 
 ## Available VMs
