@@ -1,12 +1,10 @@
 # Zenoh Bridge ROS2 - Connecting UCL HereEast and Condensor/Unified AI Exmaples
 
-This guide is a setup guide for the connection between UCL HereEast and Condensor. 
+> This guide is a setup guide for the connection between UCL HereEast and Condensor using [zenoh-plugin-ros2dds](https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds?tab=readme-ov-file )
 
 > **Note:** You will need admin knowledge of the IP Address of the UCL HereEast Machine for these instructions. 
 
 This is intended for the admin controlled gateway VM, for VM-to-VM communication you will not need to set this up you should hopefully only be relying on ROS-to-ROS communication for intra-VM comms. The reason is that there is limited bandwidth on the HereEast connection and therefore we must minimise data duplication through that link. 
-
-The tool is located here: https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds?tab=readme-ov-file 
 
 ## Connecting to UCL HereEast Data Sources
 
@@ -87,7 +85,7 @@ Then on the Unified-AI side VM, start a new terminal and exec into the running c
 docker exec -it zenoh_test bash
 ```
 
-> **Note**: Container has tmux installed if easier to use. Can run zenoh bridge and any additional commands as tmux panes/windows. 
+> **Note**: Container has [Tmux](https://github.com/tmux/tmux/wiki/Getting-Started) installed if easier to use. Can run zenoh bridge and any additional commands as tmux panes/windows.
 
 And then see if you are getting ros data
 ```bash
