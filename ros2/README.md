@@ -34,7 +34,9 @@ colcon build --symlink-install
 source install/setup.bash
 ```
 
+
 ## References
-* https://docs.ros.org/en/foxy/index.html
+* https://docs.ros.org/en/humble/index.html
 * https://roboticseabass.com/2023/07/09/updated-guide-docker-and-ros2/ 
 * https://faun.pub/ros2-humble-gui-docker-container-a-step-by-step-guide-c541b73fe141
+* https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds?tab=readme-ov-file 
