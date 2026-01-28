@@ -7,12 +7,14 @@ Video: https://www.youtube.com/watch?v=u54WAlAewMU
 
 Run container
 ```bash
-bash run-ros2cuda.bash
+cd ros2/cuda
+PROFILE=ros2cuda && ROS_DISTRO=jazzy && VERSION_ID=0.0.2
+bash run-ros2cuda.bash $PROFILE $ROS_DISTRO $VERSION_ID
 ```
 
 Build ros packages and lauch it
 ```bash
-cd /home/hackathon-01/ros2/tutorials/harmonic_gui
+cd /home/hackathon-01/ros2/examples/harmonic_gui
 colcon build --base-paths src
 source /home/hackathon-01/ros2/tutorials/harmonic_gui/install/setup.bash
 ros2 launch robot_gazebo main.launch.py 

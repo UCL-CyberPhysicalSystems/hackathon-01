@@ -1,12 +1,12 @@
 ARG UBUNTU_RELEASE_YEAR=24
 ARG UBUNTU_RELEASE_MONTH=04
-ARG CUDA_MAJOR=13
-ARG CUDA_MINOR=0
-ARG CUDA_PATCH=0
+ARG CUDA_MAJOR=12
+ARG CUDA_MINOR=6
+ARG CUDA_PATCH=3
 
 # Ubuntu versions
-##  Ubuntu 24.04 Noble
 ##  Ubuntu 22.04 Jammy
+##  Ubuntu 24.04 Noble
 
 # General ROS2 environment variables
 # Define the container image(s) associated with each ROS distribution.
@@ -19,7 +19,7 @@ ARG CUDA_PATCH=0
 ## Gz Jetty > ROS 2 Rolling
 ## Gz Ionic > ROS 2 Kilted
 ## GZ Fortress (LTS) > ROS 2 Humble (LTS)
-## GZ Harmonic (LTS) > ROS 2 Jazzy (LTS)
+## GZ Harmonic (LTS) > ROS 2 Jazzy (LTS) > Harmonic binaries are provided for Ubuntu Jammy (22.04) and Ubuntu Noble (24.04)
 ## https://gazebosim.org/docs/latest/ros_installation/
 
 FROM docker.io/nvidia/cuda:${CUDA_MAJOR}.${CUDA_MINOR}.${CUDA_PATCH}-devel-ubuntu${UBUNTU_RELEASE_YEAR}.${UBUNTU_RELEASE_MONTH} AS base
@@ -78,7 +78,6 @@ RUN curl -sSL https://packages.osrfoundation.org/gazebo.key | gpg --dearmor -o /
     apt-get update -qq && \
     apt-get install -y libgz-transport13-dev
 
-#ENV ROS_DISTRO=humble
 ENV ROS_DISTRO=jazzy
 ENV PYTHON_VERSION=python3.12
 
@@ -158,27 +157,12 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     python3-pytest-cov \
     python3-rosdep \
     python3-gz-transport13 \
+    tmux \
     ros-dev-tools \
     vim \
     xclip \
     zstd \
     && rm -rf /var/lib/apt/lists/*
-
-
-#TOTEST
-# #############################
-# # Setting up environment
-# #############################
-# Add uv to PATH
-#ENV PATH="/root/.local/bin/:$PATH"
-#WORKDIR /ros2_ws
-## Create uv virtual environment and install dependencies
-#RUN uv venv --python 3.9 --system-site-packages
-#RUN . .venv/bin/activate
-#RUN pip install -U pip argcomplete setuptools==58.2.0 bloom colcon-common-extensions rosdep vcstool lark numpy==1.23.4 scipy==1.11.1 torch torchvision PyQt5 opencv-python h5py tqdm gym==0.17.3 typed-argument-parser==1.10.0 einops termcolor==2.4.0 GitPython==3.1.37 matplotlib==3.7.2 pybullet==3.2.5 colorama==0.4.6 pandas imageio wandb==0.14.2
-# why setuptools 80.7.1 does not work? #https://robotics.stackexchange.com/questions/101255/setuptoolsdeprecationwarning-setup-py-install-is-deprecated-use-build-and-pip
-# pip list --verbose #see all installed packages
-
 
 #####################################
 # ROS2 Environment Setup and entrypoint
@@ -187,13 +171,3 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 RUN echo "" >> ~/.bashrc
 RUN echo "## ROS2" >> ~/.bashrc
 RUN echo 'source /opt/ros/${ROS_DISTRO}/setup.bash' >> ~/.bashrc
-
-#TOTEST
-# RUN echo 'source /ros2_ws/.venv/bin/activate' >> ~/.bashrc
-# ### Setting up and calling the entrypoint
-# RUN echo '#!/usr/bin/env bash' > /ros_entrypoint.sh
-# RUN echo 'source $HOME/.bashrc' >> /ros_entrypoint.sh
-# RUN echo 'exec "$@"' >> /ros_entrypoint.sh
-# RUN chmod +x /ros_entrypoint.sh
-# ENTRYPOINT ["/ros_entrypoint.sh"]
-
