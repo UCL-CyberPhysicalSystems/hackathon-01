@@ -119,16 +119,16 @@ build_image() {
     # Generate image tag with actual values
     case "$profile" in
         "ros2")
-            image_tag="ros2:${ros_distro}-${version_id}"
+            image_tag="ros2-${ros_distro}:${version_id}"
             ;;
         "network")
-            image_tag="ros2:network-${ros_distro}-${version_id}"
+            image_tag="ros2-network-${ros_distro}:${version_id}"
             ;;
         "ros2cuda")
-            image_tag="ros2:cuda-${ros_distro}-${version_id}"
+            image_tag="ros2cuda-${ros_distro}:${version_id}"
             ;;
         "isaacsim")
-            image_tag="isaac_sim_ros2:5.0.0-${ros_distro}-${version_id}"
+            image_tag="isaac_sim_ros2-5.0.0-${ros_distro}:${version_id}"
             ;;
     esac
     
@@ -159,7 +159,7 @@ main() {
     local VERSION_ID="${3:-$DEFAULT_VERSION_ID}"
     
     # Validate ROS distribution
-    local valid_distros=("foxy" "galactic" "humble" "iron" "rolling")
+    local valid_distros=("foxy" "galactic" "humble" "iron" "rolling" "jazzy")
     if [[ ! " ${valid_distros[*]} " =~ " ${ROS_DISTRO} " ]]; then
         print_warning "Note: $ROS_DISTRO is not in the typical ROS2 distribution list"
     fi

@@ -116,20 +116,4 @@ could not connect to display
 This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.
 Available platform plugins are: eglfs, linuxfb, minimal, minimalegl, offscreen, vnc, xcb.
 
-## TO-HACK
-* Multi-stage Build Version (Smaller Image):
-```bash
-# Build stage
-FROM ubuntu:22.04 as builder
 
-# Install build dependencies and build zenoh
-# ... (similar build commands as above)
-
-# Final stage
-FROM ghcr.io/ucl-arc-environments/kubeflow-notebook-images-jupyter-pytorch-cuda-arc:v1.0.11
-
-# Copy only the built artifacts from builder
-COPY --from=builder /usr/local/lib/zenoh /usr/local/lib/zenoh
-COPY --from=builder /root/.cargo /home/jovyan/.cargo
-# ... rest of final image
-```
