@@ -1,98 +1,166 @@
-# Zenoh Bridge ROS2 - Connecting UCL HereEast and Condensor/Unified AI Exmaples
+# Zenoh Bridge ROS 2: Connecting UCL HereEast and Condenser/Unified AI
 
-> This guide is a setup guide for the connection between UCL HereEast and Condensor using [zenoh-plugin-ros2dds](https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds?tab=readme-ov-file )
+This guide explains how to connect **UCL HereEast (bare‑metal compute)** with **Condenser/Unified AI (virtual machines)** using the [`zenoh-plugin-ros2dds`](https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds).
 
-> **Note:** You will need admin knowledge of the IP Address of the UCL HereEast Machine for these instructions. 
+The setup is intended for an **admin‑controlled gateway VM** and for anyone from ARC UCL staff for **VM‑to‑VM communication inside Condenser**.
 
-This is intended for the admin controlled gateway VM, for VM-to-VM communication you will not need to set this up you should hopefully only be relying on ROS-to-ROS communication for intra-VM comms. The reason is that there is limited bandwidth on the HereEast connection and therefore we must minimise data duplication through that link. 
+> **Notes**
+> The HereEast link has limited bandwidth. Using a single gateway bridge avoids unnecessary data duplication across the VPN.
 
-## Connecting to UCL HereEast Data Sources
+---
 
-For the connection between UCL HereEast G40 space and Condensor/Unified-AI, we need a way of transmitting data across the UCL VPN. 
+## Architecture overview
 
-> **Note:** Refer to this documentation for VPN instructions: https://www.ucl.ac.uk/isd/services/get-connected/ucl-virtual-private-network-vpn 
+* **Source**: UCL HereEast G40 machine (Drummond)
+* **Transport**: UCL VPN + TCP
+* **Bridge**: `zenoh-bridge-ros2dds`
+* **Destination**: Gateway VM inside the Condenser cluster
+* **Inside Condenser**: Native ROS 2 discovery and communication
 
-To do this we use the `zenoh-bridge-ros2dds` tool which listens on ros2 but sends relevant data over a TCP pipe between two locations. 
+Only the **G40 ↔ gateway VM** hop requires Zenoh. Everything downstream remains pure ROS 2.
 
-The zenoh bridge will only be needed to bridge the gap between G40 and a gateway VM within our condensor cluster. Once inside the condensor cluster on the same subnet, standard ROS2 middleware discovery and data sharing will be accessible. 
+---
 
+## Prerequisites
 
-### Running the Docker container
+* Access to **UCL VPN**
 
-In this folder there is a docker container with `zenoh-bridge-ros2dds` already written. You will first need to install Docker onto the VM, but once that is completed (with postinstallation steps performed):
+  * VPN instructions: [https://www.ucl.ac.uk/isd/services/get-connected/ucl-virtual-private-network-vpn](https://www.ucl.ac.uk/isd/services/get-connected/ucl-virtual-private-network-vpn)
+* Admin access to:
 
-To build use: 
+  * The **G40 machine IP address** (on the UCL VPN)
+  * A **gateway VM** in the Condenser cluster
+* Docker installed on both sides
+* ROS 2 (Humble or compatible)
+
+---
+
+## Connecting to UCL HereEast data sources (G40 / Drummond)
+
+To transmit ROS 2 data from the G40 space to Condenser across the UCL VPN, we use:
+
+* `zenoh-bridge-ros2dds`
+
+This tool:
+
+* Listens to ROS 2 topics locally
+* Forwards selected traffic over a **TCP connection**
+
+Once traffic reaches the Condenser subnet, standard ROS 2 middleware handles discovery and transport.
+
+> **Note**
+> You must know the **UCL VPN IP address of the G40 machine** to complete this setup.
+
+---
+
+## Running the Docker container on the G40 machine
+
+A Docker image is provided in this directory: [`Dockerfile`](Dockerfile). It builds `zenoh-bridge-ros2dds` following the official [Linux (Debian) install instructions](https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds?tab=readme-ov-file#linux-debian).
+
+### Build the image
 
 ```bash
 docker build -t zenoh_test .
 ```
 
-Then to drop you into the terminal run the following command 
+### Run the container
+
 ```bash
 docker run -it --net=host zenoh_test:latest bash
 ```
 
-> **Note:** `--net=host` is only needed if you wish to communicate with other ROS docker environments, otherwise you can just expose port 7447
+> **Note**
+> `--net=host` is only required if you want to communicate with other ROS containers on the host. Otherwise, exposing port `7447` explicitly is sufficient.
 
-On the G40 Side, local sensing side, simply run `zenoh-bridge-ros2dds` and this will start a listener (note you will likely need to run this with all of your ros environments sourced if using custom messages). 
+---
 
-Once running, start the ros2 data streams you wish to send through 
+## Running `zenoh-bridge-ros2dds` on the G40 machine
 
-On the Unified-AI side, spin up the container on the VM, and this time run:
+1. **Record the G40 VPN IP address**.
+
+2. **Set a consistent ROS domain ID**:
+
+   ```bash
+   export ROS_DOMAIN_ID=2
+   ```
+
+3. **Start the Zenoh bridge**:
+
+   ```bash
+   zenoh-bridge-ros2dds
+   ```
+
+4. **Launch the ROS 2 nodes** that publish the data you want to forward.
+
+5. The bridge will now listen for ROS 2 traffic and wait for incoming TCP connections from Condenser.
+
+---
+
+## Connecting from the Condenser gateway VM
+
+On the gateway VM, the Zenoh bridge actively connects back to the G40 machine.
 
 ```bash
-zenoh-bridge-ros2dds -e tcp/${G40_MACHINE_IP}:7447
+zenoh-bridge-ros2dds -e tcp/${G40_MACHINE_IP}:7447 -d 2
 ```
 
-> **Note:** In this case the variable `${G40_MACHINE_IP}` is admin knowledge. However this setup can be replicated for other types of connections. 
+Where:
 
-In a separate terminal inside docker, you should be able to interrogate ROS using `ros2 topic list` etc. 
+* `${G40_MACHINE_IP}` is the VPN IP of the G40 machine
+* `-d 2` matches the `ROS_DOMAIN_ID`
 
-And that will drop you into the container, at which point follow the above examples. 
+This pattern can be reused for other remote sources if required.
 
-### Running Bare Metal
+---
 
-To set this up, make a note of the UCL VPN IP Address of the G40 Machine. 
+## Working inside Condenser virtual machines
 
-Install zenoh bridge ros2dds (See [Linux Debian Install Instructions](https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds?tab=readme-ov-file#linux-debian)):
+### 1. Connect to the VM (with X11 forwarding)
 
 ```bash
-curl -L https://download.eclipse.org/zenoh/debian-repo/zenoh-public-key | sudo gpg --dearmor --yes --output /etc/apt/keyrings/zenoh-public-key.gpg
-echo "deb [signed-by=/etc/apt/keyrings/zenoh-public-key.gpg] https://download.eclipse.org/zenoh/debian-repo/ /" | sudo tee -a /etc/apt/sources.list > /dev/null
-sudo apt update
-sudo apt install zenoh-bridge-ros2dds
+IP2=00.000.00.4
+ssh -Y -J condenser ubuntu@${IP2}  # example: cyber-physical-lab-2
 ```
 
-Once installed, in a terminal, simple run `zenoh-bridge-ros2dds` and this will start a listener (note you will likely need to run this with all of your ros environments sourced if using custom messages). 
+### 2. Pull the ROS 2 container image (if needed)
 
-Once running, start the ros2 data streams you wish to send through 
+Follow the instructions here:
 
-On the Unified-AI side, spin up your container as above, and follow the previous instructions. 
+* [https://github.com/UCL-CyberPhysicalSystems/hackathon-01/tree/main/ros2/condenser#pull-image](https://github.com/UCL-CyberPhysicalSystems/hackathon-01/tree/main/ros2/condenser#pull-image)
 
-## Testing Connectivity 
-
-First start up the zenoh bridge as above. There should be a set of stdout confirming a connection if successful. 
-
-Then, on the G40 side, start some publishers. For this example we are just creating our own, but this could be other data too. Start a second terminal, source ros2 and run the following:
+### 3. Start the ROS 2 container
 
 ```bash
-ros2 topic pub ros2 topic pub /hello std_msgs/msg/String {"data: hello"} 10.0
+wget https://raw.githubusercontent.com/UCL-CyberPhysicalSystems/hackathon-01/refs/heads/main/ros2/network/run-ros2.bash
+GITHUB_USERNAME=mxochicale PROJECT_NAME=ros2condenser VERSION_ID=0.0.3 bash run-ros2.bash
 ```
 
-Then on the Unified-AI side VM, start a new terminal and exec into the running container e.g.
+### 4. Verify ROS 2 topics
+
+Inside the container, open a separate terminal and run:
 
 ```bash
-docker exec -it zenoh_test bash
-```
-
-> **Note**: Container has [Tmux](https://github.com/tmux/tmux/wiki/Getting-Started) installed if easier to use. Can run zenoh bridge and any additional commands as tmux panes/windows.
-
-And then see if you are getting ros data
-```bash
+export ROS_DOMAIN_ID=2
 ros2 topic list
-ros2 topic echo /hello
-ros2 topic hz /hello
+ros2 topic echo /livox/lidar_IP
+ros2 run rviz2 rviz2
 ```
-You should see the topics you published on the G40 side, the contents and the message frequency should match as well. 
 
+You should see:
+
+* The same topics published on the G40 side
+* Matching message contents and frequencies
+
+---
+
+## Visualising data with RViz2
+
+[RViz2](https://docs.ros.org/en/humble/Tutorials/Intermediate/RViz/RViz-User-Guide/RViz-User-Guide.html) can be used to visualise 3D sensor data forwarded through Zenoh.
+
+Tips:
+
+* Use **tmux** to manage multiple terminals (bridge, ROS nodes, debugging tools):
+
+  * [https://github.com/tmux/tmux/wiki/Getting-Started](https://github.com/tmux/tmux/wiki/Getting-Started)
+* Keep the Zenoh bridge running in a dedicated pane or window
 
