@@ -48,6 +48,8 @@ docker run \
     --env "QT_X11_NO_MITSHM=1" \
     --env "ACCEPT_EULA=Y" \
     --env "PRIVACY_CONSENT=Y" \
+    --device /dev/dri \
+    --env XDG_RUNTIME_DIR=/tmp/runtime-root \
     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
     -v "$HOME/.Xauthority:/home/rosuser/.Xauthority:rw" \
     -v "$(pwd):/workspace" \
