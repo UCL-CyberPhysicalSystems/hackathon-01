@@ -1,6 +1,5 @@
 # Docker image with CUDA depdendencies
 
-
 ## Build docker images locallly with [build-docker.bash](build-docker.bash) 
 ```bash
 PROFILE=ros2cuda && ROS_DISTRO=jazzy && VERSION_ID=0.0.2
