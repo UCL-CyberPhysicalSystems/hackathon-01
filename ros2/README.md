@@ -1,6 +1,21 @@
 # ROS2
 > The Robot Operating System (ROS) is a set of software libraries and tools for building robot applications. From drivers and state-of-the-art algorithms to powerful developer tools, ROS has the open source tools you need for your next robotics project.
-> REP 2000: https://ros.org/reps/rep-2000.html defines the timeline for future ROS 2 releases as well as the targeted platforms for each specific one. 
+
+## ROS2 releases and versions
+Platforms are defined in REP 2000: https://ros.org/reps/rep-2000.html
+REP 2000: https://ros.org/reps/rep-2000.html defines the timeline for future ROS 2 releases as well as the targeted platforms for each specific one. 
+
+* General ROS2 environment variables
+Define the container image(s) associated with each ROS distribution.
+   * Humble Hawksbill (May 2022 - May 2027); Ubuntu 22.04 Jammy; python3.10
+   * Iron Irwini (May 2023 - November 2024)
+   * Jazzy Jalisco (May 2024 - May 2029);  Ubuntu 24.04 Noble; python3.12
+
+* Gazebo versions https://gazebosim.org/docs/latest/ros_installation
+   * Gz Jetty > ROS 2 Rolling
+   * Gz Ionic > ROS 2 Kilted
+   * GZ Fortress (LTS) > ROS 2 Humble (LTS)
+   * GZ Harmonic (LTS) > ROS 2 Jazzy (LTS) > Harmonic binaries are provided for Ubuntu Jammy (22.04) and Ubuntu Noble (24.04)
 
 ## Build docker images with custom parameters
 Example of [build-docker.bash](build-docker.bash) where Profiles could be: ros2, network, ros2cuda, isaacsim, all.
