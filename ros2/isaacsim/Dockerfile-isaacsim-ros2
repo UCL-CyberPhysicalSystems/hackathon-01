@@ -6,6 +6,24 @@ ARG ISAAC_PATCH=0
 
 FROM nvcr.io/nvidia/isaac-sim:${ISAAC_MAJOR}.${ISAAC_MINOR}.${ISAAC_PATCH}
 
+# Ubuntu versions
+##  Ubuntu 22.04 Jammy
+##  Ubuntu 24.04 Noble
+
+# General ROS2 environment variables
+# Define the container image(s) associated with each ROS distribution.
+# Platforms are defined in REP 2000: https://ros.org/reps/rep-2000.html
+##  Humble Hawksbill (May 2022 - May 2027); Ubuntu 22.04; python3.10
+##  Iron Irwini (May 2023 - November 2024)
+##  Jazzy Jalisco (May 2024 - May 2029);  Ubuntu 24.04; python3.12
+
+# Gazebo versions
+## Gz Jetty > ROS 2 Rolling
+## Gz Ionic > ROS 2 Kilted
+## GZ Fortress (LTS) > ROS 2 Humble (LTS)
+## GZ Harmonic (LTS) > ROS 2 Jazzy (LTS) > Harmonic binaries are provided for Ubuntu Jammy (22.04) and Ubuntu Noble (24.04)
+## https://gazebosim.org/docs/latest/ros_installation/
+
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Set environment variables
@@ -54,6 +72,7 @@ RUN set -eux && \
 
 # General ROS2 environment variables
 ENV ROS_DISTRO=humble
+# ENV ROS_DISTRO=jazzy
 ENV ROS_VERSION=2
 ENV ROS_PYTHON_VERSION=3
 
