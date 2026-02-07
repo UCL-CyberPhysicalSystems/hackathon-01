@@ -6,6 +6,7 @@
 Example of [build-docker.bash](build-docker.bash) where Profiles could be: ros2, network, ros2cuda, isaacsim, all.
 ```bash
 PROFILE=ros2 && ROS_DISTRO=humble && VERSION_ID=0.0.1
+PROFILE=isaacsim && ROS_DISTRO=humble && VERSION_ID=0.0.2
 bash build-docker.bash $PROFILE $ROS_DISTRO $VERSION_ID
 ```
 
@@ -18,7 +19,8 @@ Once you have built docker images, you can then run your image for [basic](basic
 ```bash
 docker images && docker ps # that list images containers
 docker exec -it <container_id> # Exececute command inside the containers
-docker exec -it $(docker container ls  | grep '${IMAGENAME}' | awk '{print $1}') # use IMAGENAME variable to select container id for docker command execution
+# use IMAGENAME variable to select container id for docker command execution
+docker exec -it $(docker container ls  | grep '${IMAGENAME}' | awk '{print $1}')
 docker rmi --force <ID> # remove docker images
 docker system prune -f --volumes # free up disk space
 ```

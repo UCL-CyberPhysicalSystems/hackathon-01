@@ -1,6 +1,6 @@
 # Isaacsim docker image
 
-## Build docker images locallly with [build-docker.bash](build-docker.bash) 
+## Build docker images with [latest](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/isaac-sim) isaacsim image locallly with [build-docker.bash](../build-docker.bash)
 ```bash
 PROFILE=isaacsim && ROS_DISTRO=humble && VERSION_ID=0.0.2
 bash build-docker.bash $PROFILE $ROS_DISTRO $VERSION_ID
