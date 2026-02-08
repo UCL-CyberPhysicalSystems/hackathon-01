@@ -27,7 +27,7 @@ declare -A IMAGE_TAGS=(
     ["ros2"]="ros2:${ROS_DISTRO:-$DEFAULT_ROS_DISTRO}-${VERSION_ID:-$DEFAULT_VERSION_ID}"
     ["network"]="ros2:network-${ROS_DISTRO:-$DEFAULT_ROS_DISTRO}-${VERSION_ID:-$DEFAULT_VERSION_ID}"
     ["ros2cuda"]="ros2:cuda-${ROS_DISTRO:-$DEFAULT_ROS_DISTRO}-${VERSION_ID:-$DEFAULT_VERSION_ID}"
-    ["isaacsim"]="isaac_sim_ros2:5.0.0-${ROS_DISTRO:-$DEFAULT_ROS_DISTRO}-${VERSION_ID:-$DEFAULT_VERSION_ID}"
+    ["isaacsim"]="isaacsim-${ROS_DISTRO:-$DEFAULT_ROS_DISTRO}-${VERSION_ID:-$DEFAULT_VERSION_ID}"
 )
 
 # ==================== FUNCTIONS ====================
@@ -128,7 +128,7 @@ build_image() {
             image_tag="ros2cuda-${ros_distro}:${version_id}"
             ;;
         "isaacsim")
-            image_tag="isaac_sim_ros2-5.0.0-${ros_distro}:${version_id}"
+            image_tag="isaacsim-${ros_distro}:${version_id}"
             ;;
     esac
     
