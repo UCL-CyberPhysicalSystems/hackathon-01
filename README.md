@@ -51,7 +51,7 @@ See the basic prerequisites below. For further details, please see [here](docs/a
 ## :date: Agenda
 The following agenda is a general guide and may be subject to slight changes. 
 The main essence of the hackathon is to document progress as we hack.
-See detailed agenda [here](docs/agenda/day01.md).
+See detailed agenda [here](docs/agenda/README.md).
 
 | Time  | Activity  | 
 | --- |--- |
