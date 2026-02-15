@@ -11,13 +11,13 @@ Additionally, these hackathons aim to spark new projects and collaborations that
 WHO: 5 to 10 ARC staff, including someone from Environments to assist with setting up VMs. Participants would also include staff involved in projects using live data, and those with knowledge of ROS.   
 WHAT: Address initial issues in network connectivity, VMs, and ROS. Generate ideas for Hackathon 2, assessing feasibility and planning the necessary work in preparation.    
 WHEN: 2 March 2026 (FYI: TIP dates are 14–15 January 2026, 15-16 April 2026).   
-WHERE: UCL Here East (G40). 8-9 East Bay Lane, Queen Elizabeth Olympic Park, London, E15 2GW. [google-maps](https://maps.app.goo.gl/nvxAcyUEg3A4ae6J8)
+WHERE: UCL Here East (G40). 8-9 East Bay Lane, Queen Elizabeth Olympic Park, London, E15 2GW. [google-maps](https://maps.app.goo.gl/ytkoBQ3YRWAaFMg46)
 
 ### Hackathon 2: Larger Hackathon to Explore Ideas and Create Projects 
 WHO: 20 to 30 ARC staff and open to anyone interested, ideally including all attendees from Hackathon 1.    
 WHAT: Explore project ideas in key areas such as:  Data (collection, processing, visualisation), Machine learning applied to live data, Live data infrastructure and security, Robot control.    
 WHEN: Late April 2026 (FYI: TIP dates 15–16 April 2026); or late July 2026 (FYI: TIP dates 7–8 July 2026); or late Oct (FYI: TIP dates mid Oct 2026) 
-WHERE: UCL Here East (G40). 8-9 East Bay Lane, Queen Elizabeth Olympic Park, London, E15 2GW. [google-maps](https://maps.app.goo.gl/nvxAcyUEg3A4ae6J8)
+WHERE: UCL Here East (G40). 8-9 East Bay Lane, Queen Elizabeth Olympic Park, London, E15 2GW. [google-maps](https://maps.app.goo.gl/ytkoBQ3YRWAaFMg46)
 
 ## :sparkles: Organisers, participants, and collaborators.
 
