@@ -1,4 +1,4 @@
-# Day 01
+# Agenda
 
 ## :computer: Pre-requisites 
 * GitHub username (or [sign up](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account) for a GitHub account if you don’t have one).
