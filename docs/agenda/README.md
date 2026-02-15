@@ -3,7 +3,7 @@
 ## :computer: Pre-requisites 
 * GitHub username (or [sign up](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account) for a GitHub account if you don’t have one).
 * Set up [UCL Virtual Private Network (VPN)](https://www.ucl.ac.uk/isd/services/get-connected/ucl-virtual-private-network-vpn)
-* Set up SSH certificates [`~/.ssh/id_condenser.signed`](https://github.com/UCL-CyberPhysicalSystems/hackathon-01/tree/62-agenda/ros2/condenser#setting-up-ssh-certificates)
+* Set up SSH certificates [`~/.ssh/id_condenser.signed`](/ros2/condenser/README.md#setting-up-ssh-certificates)
 * Participants must bring their own computers running Linux, macOS or Windows, with either a CPU or GPU. Machines with GPUs are preferred for local AI model prototyping. The minimum laptop requirements are: 8 CPU cores, 16 GB RAM, 30 GB of free disk space
 
 ## :date: Agenda
