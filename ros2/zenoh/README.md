@@ -137,6 +137,8 @@ docker run \
     -it \
     --rm \
     --net=host \
+    --pid=host \
+    --ipc=host \
     --privileged \
     --device=/dev/video0:/dev/video0 \
     --group-add video \
@@ -144,7 +146,7 @@ docker run \
     --env "QT_X11_NO_MITSHM=1" \
     --env "ACCEPT_EULA=Y" \
     --env "PRIVACY_CONSENT=Y" \
-    --env "ROS_DOMAIN_2" \
+    --env "ROS_DOMAIN_ID=2" \
     --device /dev/dri \
     --env XDG_RUNTIME_DIR=/tmp/runtime-root \
     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
