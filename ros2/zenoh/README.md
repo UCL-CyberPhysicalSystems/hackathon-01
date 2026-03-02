@@ -164,6 +164,9 @@ Inside the container, open a separate terminal and run:
 export ROS_DOMAIN_ID=2
 ros2 topic list
 ros2 topic echo /livox/lidar_IP
+ros2 topic delay /livox/lidar_IP
+ros2 topic hz /livox/lidar_IP
+ros2 topic bw /livox/lidar_IP
 ros2 run rviz2 rviz2
 ```
 
