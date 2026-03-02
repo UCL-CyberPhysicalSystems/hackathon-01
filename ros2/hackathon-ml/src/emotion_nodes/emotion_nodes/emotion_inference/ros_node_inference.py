@@ -7,7 +7,6 @@ from sensor_msgs.msg import Image
 from std_msgs.msg import String
 from cv_bridge import CvBridge
 import json
-import numpy as np
 
 from inference import EmotionInferenceEngine
 
@@ -43,25 +42,10 @@ class EmotionInferenceNode(Node):
         self.prediction_pub = self.create_publisher(String, "/emotion/prediction", 10)
 
         self.get_logger().info(f"EmotionInferenceNode ready — model: {model_id}")
-
-        # Run a single dummy test after 2s to prove pipeline works
-        self.startup_timer = self.create_timer(2.0, self.run_startup_test)
-
-    def run_startup_test(self):
-        """Run one dummy inference on startup, then stop."""
-        self.startup_timer.cancel()
-        self.get_logger().info("Running startup test with dummy 224x224 image...")
-
-        dummy = np.random.randint(0, 255, (224, 224, 3), dtype=np.uint8)
-        msg = self.bridge.cv2_to_imgmsg(dummy, encoding="rgb8")
-        msg.header.frame_id = "startup_test"
-        msg.header.stamp = self.get_clock().now().to_msg()
-
-        self.image_callback(msg)
-        self.get_logger().info("Startup test complete. Waiting for /emotion/input_image...")
+        self.get_logger().info("Waiting for images on /emotion/input_image...")
 
     def image_callback(self, msg: Image):
-        self.get_logger().info(f"Received image — frame_id: {msg.header.frame_id}, ")
+        self.get_logger().info(f"Received image — frame_id: {msg.header.frame_id}")
 
         try:
             cv_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding="rgb8")
