@@ -6,15 +6,17 @@ services:
     tty: true
     stdin_open: true
     restart: unless-stopped
-    working_dir: /hackathon
+    working_dir: /tmp/hackathon
+    volumes:
+      - ./_docker_data:/tmp/hackathon
     command:
       - /bin/bash
       - -lc
       - |
         set -euo pipefail
 
-        mkdir -p /hackathon
-        cd /hackathon
+        mkdir -p /tmp/hackathon
+        cd /tmp/hackathon
 
         if [ ! -d hackathon-01/.git ]; then
           git clone https://github.com/UCL-CyberPhysicalSystems/hackathon-01.git
