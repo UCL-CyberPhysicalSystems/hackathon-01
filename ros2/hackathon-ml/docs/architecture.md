@@ -66,6 +66,7 @@ Design notes:
 - Use QoS: `SensorDataQoS` for image subscription
 - Use depth 1 queue to avoid backlog
 - This node enforces deterministic sampling even if camera is 15/30 FPS
+- Optional duplicate suppression mode: timer still ticks at 4 Hz, but publish occurs only when a newer frame than the last published frame is available (effective output rate <= 4 Hz)
 
 ### 4.2 `emotion_inference_node`
 Purpose: run ML inference and produce machine-readable expression outputs.
