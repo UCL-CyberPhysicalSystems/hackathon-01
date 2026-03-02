@@ -23,12 +23,12 @@
 
 > [!WARNING]
 > **add rosdep:** the instructions in the [yolo_ros](https://github.com/mgonzs13/yolo_ros/tree/main) repository to build the yolo module include adding rosdep. You can add rosdep by running the following command:
-```bash
-sudo apt-get update
-sudo apt-get install python3-rosdep
-rosdep init
-rosdep update
-```
+> ```bash
+> sudo apt-get update
+> sudo apt-get install python3-rosdep
+> rosdep init
+> rosdep update
+> ```
 
 to test the yolo module, run the following command:
 ```bash
