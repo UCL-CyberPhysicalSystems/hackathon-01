@@ -4,20 +4,22 @@ services:
     container_name: emotion_nodes_runner
     user: "0:0"
     network_mode: host
+    ipc: host
+    pid: host
     tty: true
     stdin_open: true
     restart: unless-stopped
-    working_dir: /tmp/hackathon
+    working_dir: /hackathon
     volumes:
-      - hackathon_data:/tmp/hackathon
+      - hackathon_data:/hackathon
     command:
       - /bin/bash
       - -lc
       - |
         set -eo pipefail
 
-        mkdir -p /tmp/hackathon
-        cd /tmp/hackathon
+        mkdir -p /hackathon
+        cd /hackathon
 
         if [ ! -d hackathon-01/.git ]; then
           git clone https://github.com/UCL-CyberPhysicalSystems/hackathon-01.git
