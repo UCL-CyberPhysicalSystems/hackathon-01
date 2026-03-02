@@ -131,8 +131,26 @@ Follow the instructions here:
 ### 3. Start the ROS 2 container
 
 ```bash
-wget https://raw.githubusercontent.com/UCL-CyberPhysicalSystems/hackathon-01/refs/heads/main/ros2/network/run-ros2.bash
-GITHUB_USERNAME=mxochicale PROJECT_NAME=ros2condenser VERSION_ID=0.0.3 bash run-ros2.bash
+docker run \
+    --name $ADD_YOUR_NAME \
+    --entrypoint bash \
+    -it \
+    --rm \
+    --net=host \
+    --privileged \
+    --device=/dev/video0:/dev/video0 \
+    --group-add video \
+    --env "DISPLAY=$DISPLAY" \
+    --env "QT_X11_NO_MITSHM=1" \
+    --env "ACCEPT_EULA=Y" \
+    --env "PRIVACY_CONSENT=Y" \
+    --device /dev/dri \
+    --env XDG_RUNTIME_DIR=/tmp/runtime-root \
+    -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+    -v "$HOME/.Xauthority:/home/rosuser/.Xauthority:rw" \
+    -v "$(pwd):/workspace" \
+    -v "$HOME/repositories/UCL-CyberPhysicalSystems/hackathon-01:/home/rosuser/hackathon-01" \
+    ghcr.io/mxochicale/ros2condenser:0.0.3
 ```
 
 ### 4. Verify ROS 2 topics
