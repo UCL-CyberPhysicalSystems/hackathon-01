@@ -61,6 +61,7 @@ class EmotionInferenceNode(Node):
         self.get_logger().info("Startup test complete. Waiting for /emotion/input_image...")
 
     def image_callback(self, msg: Image):
+        self.get_logger().info(f"Received image — frame_id: {msg.header.frame_id}, ")
 
         try:
             cv_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding="rgb8")
