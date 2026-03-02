@@ -2,13 +2,14 @@ services:
   emotion_nodes:
     image: ghcr.io/mxochicale/ros2condenser:0.0.2
     container_name: emotion_nodes_runner
+    user: "0:0"
     network_mode: host
     tty: true
     stdin_open: true
     restart: unless-stopped
     working_dir: /tmp/hackathon
     volumes:
-      - ./_docker_data:/tmp/hackathon
+      - hackathon_data:/tmp/hackathon
     command:
       - /bin/bash
       - -lc
@@ -42,3 +43,6 @@ services:
           -p sample_rate_hz:=4.0 \
           -p publish_if_no_new_frame:=false \
           -p diagnostics_period_s:=5.0
+
+volumes:
+  hackathon_data:
