@@ -14,7 +14,7 @@ services:
       - /bin/bash
       - -lc
       - |
-        set -euo pipefail
+        set -eo pipefail
 
         mkdir -p /tmp/hackathon
         cd /tmp/hackathon
@@ -29,9 +29,11 @@ services:
         git pull --ff-only origin spark-ml
 
         cd ros2/hackathon-ml
+        set +u
         source /opt/ros/humble/setup.bash
         colcon build --packages-select emotion_nodes
         source install/setup.bash
+        set -u
 
         # Environment sequence aligned with src/emotion_nodes/README.md.
         export ROS_DOMAIN_ID=2
