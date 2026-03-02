@@ -71,6 +71,15 @@ source install/setup.bash
 ros2 run emotion_nodes emotion_frame_sampler
 ```
 
+If node discovery or topic visibility fails, initialize ROS in this order before running:
+
+```bash
+source /opt/ros/humble/setup.bash
+source /hackathon/ros2/hackathon-ml/install/setup.bash
+export ROS_DOMAIN_ID=2
+unset ROS_LOCALHOST_ONLY
+```
+
 Example with parameter overrides:
 
 ```bash
