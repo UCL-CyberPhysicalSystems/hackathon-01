@@ -34,3 +34,24 @@ to test the yolo module, run the following command:
 ```bash
 ros2 launch yolo_bringup yolo.launch.py input_image_topic:=/peak_cam/W_6340/image_raw model_type:=YOLOE device:=cpu model:=yolov8n-seg.pt
 ```
+you should see an output like the following:
+```bash
+[yolo_node-1] [INFO] [1234567890.123456789] [yolo.yolo_node]: [yolo_node] Activated
+```
+and you should be able to see the yolo topics in the ros topics list:
+```bash
+ros2 topic list
+```
+you should see an output like the following:
+```bash
+/yolo/dbg_image
+/yolo/debug_node/transition_event
+/yolo/detections
+/yolo/dgb_bb_markers
+/yolo/dgb_kp_markers
+/yolo/tracking
+/yolo/tracking_node/transition_event
+/yolo/yolo_node/transition_event
+```
+
+
