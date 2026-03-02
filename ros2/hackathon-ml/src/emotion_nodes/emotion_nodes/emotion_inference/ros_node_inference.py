@@ -38,7 +38,7 @@ class EmotionInferenceNode(Node):
         )
 
         # Sub & Pub
-        self.create_subscription(Image, "/emotion/input_image", self.image_callback, qos)
+        self.create_subscription(Image, "/emotion/input_image", self.image_callback, 10)
         self.prediction_pub = self.create_publisher(String, "/emotion/prediction", 10)
 
         self.get_logger().info(f"EmotionInferenceNode ready — model: {model_id}")
