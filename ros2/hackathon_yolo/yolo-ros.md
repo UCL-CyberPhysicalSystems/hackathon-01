@@ -55,3 +55,25 @@ you should see an output like the following:
 ```
 
 
+## Streaming the video to your local machine
+
+- install the web_video_server package:
+```bash
+sudo apt update
+sudo apt install ros-$ROS_DISTRO-web-video-server
+```
+
+- run the web_video_server:
+```bash
+ros2 run web_video_server web_video_server
+```
+
+if you added `-L 8080:localhost:8080` to your ssh command, you should be able to access the video at `http://localhost:8080`.
+
+
+## Visualizing the video
+
+on your local machine, you can visualize by going to the url http://localhost:8080 in your browser. You should see all the video topics from the ros topics list. You can select the topic you want to visualize by clicking on it. The yolo stream will be in `http://localhost:8080/stream_viewer?topic=/yolo/dbg_image`
+
+
+
