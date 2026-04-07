@@ -1,0 +1,8 @@
+# Pin numpy <2 to keep cv_bridge working
+numpy<2
+# Pillow 9.1+ needed for transformers (Resampling attribute)
+Pillow>=9.1,<11
+# Core deps
+# NOTE: Install torch separately with CPU-only: pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+transformers
+opencv-python

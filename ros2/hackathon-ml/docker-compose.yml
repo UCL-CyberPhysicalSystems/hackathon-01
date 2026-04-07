@@ -1,0 +1,52 @@
+services:
+  emotion_nodes:
+    image: ghcr.io/mxochicale/ros2condenser:0.0.2
+    container_name: emotion_nodes_runner
+    user: "0:0"
+    network_mode: host
+    ipc: host
+    pid: host
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+    working_dir: /hackathon
+    volumes:
+      - hackathon_data:/hackathon
+    command:
+      - /bin/bash
+      - -lc
+      - |
+        set -eo pipefail
+
+        mkdir -p /hackathon
+        cd /hackathon
+
+        if [ ! -d hackathon-01/.git ]; then
+          git clone https://github.com/UCL-CyberPhysicalSystems/hackathon-01.git
+        fi
+
+        cd hackathon-01
+        git fetch origin spark-ml
+        git checkout spark-ml
+        git pull --ff-only origin spark-ml
+
+        cd ros2/hackathon-ml
+        set +u
+        source /opt/ros/humble/setup.bash
+        colcon build --packages-select emotion_nodes
+        source install/setup.bash
+        set -u
+
+        # Environment sequence aligned with src/emotion_nodes/README.md.
+        export ROS_DOMAIN_ID=2
+        unset ROS_LOCALHOST_ONLY
+
+        ros2 run emotion_nodes emotion_frame_sampler --ros-args \
+          -p input_topic:=/peak_cam/W_6340/image_raw \
+          -p output_topic:=/emotion/input_image \
+          -p sample_rate_hz:=4.0 \
+          -p publish_if_no_new_frame:=false \
+          -p diagnostics_period_s:=5.0
+
+volumes:
+  hackathon_data:
