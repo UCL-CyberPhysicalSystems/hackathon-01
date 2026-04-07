@@ -13,18 +13,15 @@ WHAT: Address initial issues in network connectivity, VMs, and ROS. Generate ide
 WHEN: 2 March 2026 (FYI: TIP dates are 14–15 January 2026, 15-16 April 2026).   
 WHERE: UCL Here East (G40). 8-9 East Bay Lane, Queen Elizabeth Olympic Park, London, E15 2GW. [google-maps](https://maps.app.goo.gl/ytkoBQ3YRWAaFMg46)
 
-### Hackathon 2: Larger Hackathon to Explore Ideas and Create Projects 
-WHO: 20 to 30 ARC staff and open to anyone interested, ideally including all attendees from Hackathon 1.    
-WHAT: Explore project ideas in key areas such as:  Data (collection, processing, visualisation), Machine learning applied to live data, Live data infrastructure and security, Robot control.    
-WHEN: Late April 2026 (FYI: TIP dates 15–16 April 2026); or late July 2026 (FYI: TIP dates 7–8 July 2026); or late Oct (FYI: TIP dates mid Oct 2026) 
-WHERE: UCL Here East (G40). 8-9 East Bay Lane, Queen Elizabeth Olympic Park, London, E15 2GW. [google-maps](https://maps.app.goo.gl/ytkoBQ3YRWAaFMg46)
+:sparkles: Few highlights, learnings, and future directions (with links to documentation, code, and photos) are available [here](docs/agenda/README.md#few-highlights-learnings-and-future-directions).
 
-## :sparkles: Organisers, participants, and collaborators.
+## Organisers, participants, and collaborators.
 
 * ARC: UCL Advanced Research Computing Centre:    
-[Mack Nixon](https://github.com/TOADD), 
-[Mahmoud Abdelrazek](https://github.com/TOADD), 
-[Sunny Park](https://github.com/TOADD), 
+[Sofía Miñano](https://github.com/sfmig), 
+[Mack Nixon](https://github.com/macknix), 
+[Mahmoud Abdelrazek](https://github.com/razekmh), 
+[Sunny Park](https://github.com/sungshic), 
 [Emily Dubrovska](https://github.com/pineapple-cat), 
 [Yagmur Ozdemir](https://github.com/yidilozdemir), 
 [Marlon Wijeyasinghe](https://github.com/mwij02), 
