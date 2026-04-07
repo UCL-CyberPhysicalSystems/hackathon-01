@@ -76,6 +76,7 @@ Pre-provision larger storage volumes for VM environments.
 Prepare preconfigured ROS + AI containers to reduce setup time.
 
 Code and documentation contributions are [hackathon_yolo](../../ros2/hackathon_yolo/) and [hackathon-ml/](../../ros2/hackathon-ml/) 
+
 ![fig](macknix-sungshic-razekmh.png)
 
 
