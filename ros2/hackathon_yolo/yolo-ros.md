@@ -1,4 +1,4 @@
-# Using YOLO with ROS2 for object detection on Condensor
+# Using YOLO with ROS2 for object detection on Condensor by razekmh
 
 
 ## Logging to Condensor
