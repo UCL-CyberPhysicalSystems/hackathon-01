@@ -7,6 +7,7 @@ The ARC platforms will run containers using ROS 2 Humble on Ubuntu 22.04, where 
 ![fig](cyber-physical-hackathon-network.svg)
 
 ## Resources
+* Motion tracker with optitrack, lidar with livoxtech at CEGE
 * Dockefiles: [Dockerfile-ros2](../../ros2/Dockerfile-ros2) , [Dockerfile-ros2-cuda](../../ros2/Dockerfile-ros2-cuda) and [others](../../ros2) 
 * Zenoh (Zero Overhead Network Protocol): [home](https://zenoh.io/), [Zenoh router in a Docker container](https://zenoh.io/docs/getting-started/quick-test/)
 * [UCL Virtual Private Network (VPN)](https://www.ucl.ac.uk/isd/services/get-connected/ucl-virtual-private-network-vpn)

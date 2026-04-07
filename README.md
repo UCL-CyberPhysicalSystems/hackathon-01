@@ -3,7 +3,7 @@
 ![fig](docs/figures/team-ucl-cps-hackathon-01.svg)
 
 ## :scroll: Description
-The UCL Departments of Advanced Research Computing (ARC) and Civil, Environmental and Geomatic Engineering (CEGE) are organising a series of hackathons that combine software infrastructure from ARC with hardware and sensor infrastructure from CEGE. 
+The UCL Departments of Advanced Research Computing (ARC) and Civil, Environmental and Geomatic Engineering (CEGE) are organising a series of hackathons that combine software infrastructure from ARC with hardware and sensor infrastructure from CEGE (see more [here](docs/infrastructure)). 
 The aim is to enable UCL teams to explore cyber-physical systems, embodied AI, and physical AI.
 Additionally, these hackathons aim to spark new projects and collaborations that may lead to innovative applications for existing sensors, robots, and GPU servers, extending their use beyond current domains such as manufacturing, aerospace, healthcare, and security.
 
