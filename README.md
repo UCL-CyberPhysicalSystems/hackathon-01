@@ -13,7 +13,7 @@ WHAT: Address initial issues in network connectivity, VMs, and ROS. Generate ide
 WHEN: 2 March 2026 (FYI: TIP dates are 14–15 January 2026, 15-16 April 2026).   
 WHERE: UCL Here East (G40). 8-9 East Bay Lane, Queen Elizabeth Olympic Park, London, E15 2GW. [google-maps](https://maps.app.goo.gl/ytkoBQ3YRWAaFMg46)
 
-:sparkles: Few highlights, learnings, and future directions (with links to documentation, code, and photos) are available [here](docs/agenda/README.md).
+:sparkles: Few highlights, learnings, and future directions (with links to documentation, code, and photos) are available [here](docs/agenda/README.md#few-highlights-learnings-and-future-directions).
 
 ## Organisers, participants, and collaborators.
 
