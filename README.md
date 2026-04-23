@@ -7,13 +7,13 @@ The UCL Departments of Advanced Research Computing (ARC) and Civil, Environmenta
 The aim is to enable UCL teams to explore cyber-physical systems, embodied AI, and physical AI.
 Additionally, these hackathons aim to spark new projects and collaborations that may lead to innovative applications for existing sensors, robots, and GPU servers, extending their use beyond current domains such as manufacturing, aerospace, healthcare, and security.
 
-### Hackathon 1: Preliminary Small Hackathon for Feasibility and Idea Generation
+### :nut_and_bolt: Hackathon 1: Preliminary Small Hackathon for Feasibility and Idea Generation
 WHO: 5 to 10 ARC staff, including someone from Environments to assist with setting up VMs. Participants would also include staff involved in projects using live data, and those with knowledge of ROS.   
 WHAT: Address initial issues in network connectivity, VMs, and ROS. Generate ideas for Hackathon 2, assessing feasibility and planning the necessary work in preparation.    
 WHEN: 2 March 2026 (FYI: TIP dates are 14–15 January 2026, 15-16 April 2026).   
 WHERE: UCL Here East (G40). 8-9 East Bay Lane, Queen Elizabeth Olympic Park, London, E15 2GW. [google-maps](https://maps.app.goo.gl/ytkoBQ3YRWAaFMg46)
 
-:sparkles: Few highlights, learnings, and future directions (with links to documentation, code, and photos) are available [here](docs/agenda/README.md#few-highlights-learnings-and-future-directions).
+### :sparkles: Few highlights, learnings, and future directions (with links to documentation, code, and photos) are available [here](docs/agenda/README.md#few-highlights-learnings-and-future-directions).
 
 ## Organisers, participants, and collaborators.
 
