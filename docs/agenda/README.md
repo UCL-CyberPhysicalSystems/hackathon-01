@@ -37,6 +37,7 @@ Highlights from the Hackathon
 * Contributions were submitted and reviewed via pull requests on GitHub, demonstrating productive collaboration and solid engineering practice. 
 * Initial LiDAR visualisation experiments were promising, though they require further refinement and system-level thinking. 
 * It was encouraging to see cross-platform collaboration while configuring SSH keys across macOS, Windows, and Linux environments. 
+* Tested our UCL infrasctructure ![fig](../../docs/infrastructure/cyber-physical-hackathon-network.svg)
 
 
 ### [Emily Dubrovska](https://github.com/pineapple-cat) and [Sofía Miñano](https://github.com/sfmig)
